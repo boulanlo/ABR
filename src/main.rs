@@ -1,3 +1,12 @@
+#![warn(clippy::all)]
+use abr::ABR;
+
 fn main() {
-    println!("Hello, world!");
+    let mut a = ABR::new();
+    println!("{:?}", a);
+    a.insert("y", "y");
+    a.insert("w", "w");
+    a.insert("z", "z");
+    a.insert("x", "x");
+    println!("{:?}", a);
 }

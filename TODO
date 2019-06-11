@@ -1,0 +1,4 @@
+- Implement BST (remember mem::swap and Option::take)
+- Tests !
+- seq. iterator (depth first)
+- parallelism

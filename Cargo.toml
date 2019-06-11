@@ -1,5 +1,5 @@
 [package]
-name = "ABR"
+name = "abr"
 version = "0.1.0"
 authors = ["Louis Boulanger <louis.boulanger74@hotmail.fr>"]
 edition = "2018"
