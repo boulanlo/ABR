@@ -1,4 +1,8 @@
 use std::cmp::{Ord, Ordering};
+use std::fs::File;
+use std::io::{Write, BufWriter, Error};
+use std::process::Command;
+use std::fmt::Display;
 
 /// A node in the binary search tree
 ///
@@ -41,17 +45,69 @@ where K: Ord
     }
 
     fn get(&self, key: &K) -> Option<&V> {
-        if key.cmp(&self.key) == Ordering::Equal {
-            Some(&self.value)
+        let direction = match key.cmp(&self.key) {
+            Ordering::Equal => {
+                return Some(&self.value)
+            }
+            Ordering::Less => 0,
+            Ordering::Greater => 1
+        };
+
+        if let Some(ref child) = self.children[direction] {
+            child.get(key)
         } else {
+            None
+        }
+    }
+
+    fn get_node<'a>(node: &'a mut Option<Box<Node<K, V>>>, key: &K) -> &'a mut Option<Box<Node<K, V>>> {
+        let direction = match key.cmp(&node.as_ref().expect("get node on non present key").key) {
+            Ordering::Equal => {
+                return node
+            },
+            Ordering::Less => 0,
+            Ordering::Greater => 1
+        };
+
+        Node::get_node(&mut node.as_mut().expect("get node on non present key").children[direction], key)
+    }
+
+    fn is_leaf(&self) -> bool {
+        self.children.iter().all(|c| c.is_none())
+    }
+
+    fn is_full(&self) -> bool {
+        self.children.iter().all(|c| c.is_some())
+    }
+
+    fn get_min(&mut self) -> &mut Node<K, V> {
+        if let Some(ref mut child) = self.children[0] {
+            child.get_min()
+        } else {
+            self
+        }
+    }
+}
+
+impl<K, V> Node<K, V>
+where
+    K: Ord + Display
+{
+    fn to_dot(&self, buf: &mut BufWriter<File>) {
+        buf.write_fmt(format_args!("{} [label=\"{}\"];\n", &self.key, &self.key)).unwrap();
+        for i in 0..2 {
+            if let Some(child) = &self.children[i] {
+                child.to_dot(buf);
+            }
+        }
+        if !self.is_leaf() {
+            buf.write_fmt(format_args!("{} -> {{ ", &self.key)).unwrap();
             for i in 0..2 {
                 if let Some(child) = &self.children[i] {
-                    if let Some(value) = child.get(key) {
-                        return Some(value);
-                    }
+                    buf.write_fmt(format_args!("{} ", &child.key)).unwrap();
                 }
             }
-            None
+            buf.write_fmt(format_args!("}};\n")).unwrap();
         }
     }
 }
@@ -62,8 +118,18 @@ where K: Ord
 /// and whose length is known (the number of nodes in the tree).
 #[derive(Debug)]
 pub struct ABR<K, V> {
-    root: Option<Node<K, V>>,
+    root: Option<Box<Node<K, V>>>,
     length: usize
+}
+
+impl<K> std::iter::FromIterator<K> for ABR<K,()> where K: Ord {
+    fn from_iter<T>(iter: T) -> Self where T: IntoIterator<Item=K> {
+        let mut a = ABR::new();
+        for key in iter {
+            a.insert(key, ());
+        }
+        a
+    }
 }
 
 impl<K, V> ABR<K, V>
@@ -110,7 +176,7 @@ where K: Ord
             }            
             result
         } else {
-            self.root = Some(Node::new(key, value));
+            self.root = Some(Box::new(Node::new(key, value)));
             self.length += 1;
             None
         }
@@ -133,11 +199,7 @@ where K: Ord
     /// assert!(!btree.contains_key(42));
     /// ```
     pub fn contains_key(&self, key: K) -> bool {
-        if let Some(root) = &self.root {
-            root.get(&key).is_some()
-        } else {
-            false
-        }
+        self.root.as_ref().and_then(|o| o.get(&key)).is_some()
     }
 
     /// Returns the value associated to a key.
@@ -184,6 +246,52 @@ where K: Ord
     /// ```
     pub fn is_empty(&self) -> bool {
         self.length == 0
+    }
+
+    pub fn remove(&mut self, key: &K) -> Option<V> {
+        let child_ref = Node::get_node(&mut self.root, key);
+        let found_value = child_ref.take().map(|mut to_remove| {
+            if !to_remove.is_leaf() {
+                if to_remove.children[0].is_none() {
+                    *child_ref = to_remove.children[1].take()
+                } else if to_remove.children[1].is_none() {
+                    *child_ref = to_remove.children[0].take()
+                } else {
+                    unimplemented!()
+                }
+            }
+            to_remove.value
+        });
+        if found_value.is_some() {
+            self.length -= 1;
+        }
+        found_value
+        
+    }
+}
+
+impl<K, V> ABR<K, V>
+where
+    K: Ord + Display
+{
+    pub fn to_dot(&self, name: &str) {
+        let output = File::create(name).unwrap();
+        let mut bufwriter = BufWriter::new(output);
+
+        bufwriter.write(b"digraph BST {\nnode [fontname=\"Arial\"];\n").unwrap();
+        if let Some(node) = &self.root {
+            node.to_dot(&mut bufwriter);
+        }
+        bufwriter.write(b"\n}").unwrap();
+
+        bufwriter.flush().unwrap();
+        
+        let mut result = File::create(format!("{}.png", name)).unwrap();
+        let output_dot = Command::new("dot")
+            .arg("-Tpng")
+            .arg(name)
+            .output().unwrap();
+        result.write(&output_dot.stdout).unwrap();
     }
 }
 
