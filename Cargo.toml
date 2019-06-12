@@ -5,3 +5,4 @@ authors = ["Louis Boulanger <louis.boulanger74@hotmail.fr>"]
 edition = "2018"
 
 [dependencies]
+rayon_adaptive = {git="https://github.com/wagnerf42/rayon-adaptive", branch="new_api"}

@@ -1,12 +1,13 @@
 use crate::abr::ABR;
 use crate::node::BoxedNode;
+use std::collections::VecDeque;
 
 /// A sequential iterator for the [ABR]{struct.ABR.html} structure.
 ///
 /// This iterator goes through the tree in order, providing an ordered
 /// list of elements from the tree.
 pub struct ABRIterator<'a, K, V> {
-    visited_nodes: Vec<(&'a BoxedNode<K, V>, bool)>
+    pub visited_nodes: VecDeque<(&'a BoxedNode<K, V>, bool)>,
 }
 
 impl<'a, K, V> ABRIterator<'a, K, V> {
@@ -20,7 +21,9 @@ impl<'a, K, V> ABRIterator<'a, K, V> {
     /// assert!(tree.iter().map(|n| n.key).eq(1..=7));
     /// ```
     pub fn new(tree: &'a ABR<K, V>) -> ABRIterator<'a, K, V> {
-        ABRIterator { visited_nodes: tree.root.as_ref().into_iter().map(|r| (r, false)).collect() }
+        ABRIterator {
+            visited_nodes: tree.root.as_ref().into_iter().map(|r| (r, false)).collect(),
+        }
     }
 }
 
@@ -29,7 +32,7 @@ impl<'a, K, V> Iterator for ABRIterator<'a, K, V> {
 
     fn next(&mut self) -> Option<Self::Item> {
         loop {
-            let possible_left_subtree = if let Some(l) = self.visited_nodes.last_mut() {
+            let possible_left_subtree = if let Some(l) = self.visited_nodes.back_mut() {
                 if !l.1 {
                     l.1 = true;
                     l.0.children[0].as_ref()
@@ -40,14 +43,14 @@ impl<'a, K, V> Iterator for ABRIterator<'a, K, V> {
                 return None;
             };
             if let Some(left_subtree) = possible_left_subtree {
-                self.visited_nodes.push((left_subtree, false));
+                self.visited_nodes.push_back((left_subtree, false));
                 continue;
             }
-            
-            let (node, _) = self.visited_nodes.pop().unwrap();
-            self.visited_nodes.extend(node.children[1].as_ref().into_iter().map(|c| (c, false)));
-            return Some(node)
-            
+
+            let (node, _) = self.visited_nodes.pop_back().unwrap();
+            self.visited_nodes
+                .extend(node.children[1].as_ref().into_iter().map(|c| (c, false)));
+            return Some(node);
         }
     }
 }

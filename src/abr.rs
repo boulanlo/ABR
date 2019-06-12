@@ -240,17 +240,6 @@ where
     /// a `.png` extension.
     ///
     /// The K type (for the key) must implement `fmt::Display` to work properly.
-    ///
-    /// # Examples
-    /// Basic usage :
-    ///
-    /// ```
-    /// use abr::abr::ABR;
-    ///
-    /// let btree : ABR<_, _> = (1..10).collect();
-    ///
-    /// btree.to_dot("my_file.dot");
-    /// ```
     pub fn to_dot(&self, name: &str) {
         let output = File::create(name).unwrap();
         let mut bufwriter = BufWriter::new(output);
