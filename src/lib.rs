@@ -1,8 +1,11 @@
 use std::cmp::{Ord, Ordering};
 use std::fs::File;
-use std::io::{Write, BufWriter, Error};
+use std::io::{Write, BufWriter};
 use std::process::Command;
 use std::fmt::Display;
+
+type BoxedNode<K, V> = Box<Node<K, V>>;
+type OptBoxedNode<K, V> = Option<BoxedNode<K, V>>;
 
 /// A node in the binary search tree
 ///
@@ -12,12 +15,13 @@ use std::fmt::Display;
 struct Node<K, V> {
     key: K,
     value: V,
-    children: [Option<Box<Node<K, V>>>; 2]
+    children: [OptBoxedNode<K, V>; 2]
 }
 
 impl<K, V> Node<K, V>
 where K: Ord
 {
+    /// Creates a new node with a key and a value
     fn new(key: K, value: V) -> Node<K, V> {
         Node {
             key,
@@ -26,6 +30,7 @@ where K: Ord
         }
     }
 
+    /// Inserts a key/value pair in the node's children
     fn insert(&mut self, key: K, mut value: V) -> Option<V> {
         let direction = match &key.cmp(&self.key) {
             Ordering::Equal => {
@@ -44,6 +49,10 @@ where K: Ord
         }
     }
 
+    /// Fetches and returns if possible a value from a given key.
+    ///
+    /// If the key is present in the tree, `Some(value)` is returned.
+    /// If not, `None` is returned.
     fn get(&self, key: &K) -> Option<&V> {
         let direction = match key.cmp(&self.key) {
             Ordering::Equal => {
@@ -60,7 +69,11 @@ where K: Ord
         }
     }
 
-    fn get_node<'a>(node: &'a mut Option<Box<Node<K, V>>>, key: &K) -> &'a mut Option<Box<Node<K, V>>> {
+    /// Fetches a node object from a given key, if possible
+    ///
+    /// If the key is present in the tree, `Some(node)` is returned.
+    /// If not, `None` is returned.
+    fn get_node<'a>(node: &'a mut OptBoxedNode<K, V>, key: &K) -> &'a mut OptBoxedNode<K, V> {
         let direction = match key.cmp(&node.as_ref().expect("get node on non present key").key) {
             Ordering::Equal => {
                 return node
@@ -72,19 +85,22 @@ where K: Ord
         Node::get_node(&mut node.as_mut().expect("get node on non present key").children[direction], key)
     }
 
+    /// Returns whether or not the node is a leaf (has no children).
     fn is_leaf(&self) -> bool {
         self.children.iter().all(|c| c.is_none())
     }
 
+    /// Returns whether or not the node is full (has two children).
     fn is_full(&self) -> bool {
         self.children.iter().all(|c| c.is_some())
     }
 
-    fn get_min(&mut self) -> &mut Node<K, V> {
-        if let Some(ref mut child) = self.children[0] {
-            child.get_min()
+    /// Fetches and returns the minimum leaf from a node.
+    fn get_min(node: &mut OptBoxedNode<K, V>) -> &mut OptBoxedNode<K, V>  {
+        if node.as_ref().expect("get min on non present key").children[0].is_some() {
+            Node::get_min(&mut node.as_mut().expect("get min on non present key").children[0])
         } else {
-            self
+            node
         }
     }
 }
@@ -93,20 +109,23 @@ impl<K, V> Node<K, V>
 where
     K: Ord + Display
 {
+    /// Exports to a dot graphviz file.
     fn to_dot(&self, buf: &mut BufWriter<File>) {
         buf.write_fmt(format_args!("{} [label=\"{}\"];\n", &self.key, &self.key)).unwrap();
-        for i in 0..2 {
-            if let Some(child) = &self.children[i] {
+
+        &self.children.iter().for_each(|node| {
+            if let Some(child) = node {
                 child.to_dot(buf);
             }
-        }
+        });
+        
         if !self.is_leaf() {
             buf.write_fmt(format_args!("{} -> {{ ", &self.key)).unwrap();
-            for i in 0..2 {
-                if let Some(child) = &self.children[i] {
+            &self.children.iter().for_each(|node| {
+                if let Some(child) = node {
                     buf.write_fmt(format_args!("{} ", &child.key)).unwrap();
                 }
-            }
+            });
             buf.write_fmt(format_args!("}};\n")).unwrap();
         }
     }
@@ -118,10 +137,22 @@ where
 /// and whose length is known (the number of nodes in the tree).
 #[derive(Debug)]
 pub struct ABR<K, V> {
-    root: Option<Box<Node<K, V>>>,
+    root: OptBoxedNode<K, V>,
     length: usize
 }
 
+/// Enables collection into a tree
+///
+/// From any collection of pairs of any type and `()`, collect it
+/// into a new ABR.
+/// # Examples
+/// Basic usage :
+///
+/// ```
+/// use abr::ABR;
+///
+/// let mut btree : ABR<_, _> = (1..10).collect();
+/// ```
 impl<K> std::iter::FromIterator<K> for ABR<K,()> where K: Ord {
     fn from_iter<T>(iter: T) -> Self where T: IntoIterator<Item=K> {
         let mut a = ABR::new();
@@ -248,25 +279,57 @@ where K: Ord
         self.length == 0
     }
 
-    pub fn remove(&mut self, key: &K) -> Option<V> {
+    /// Removes a node from the tree
+    ///
+    /// Tries to remove a node from the tree, given its key.
+    /// If the key is found, it will return the removed value in
+    /// a `Some(value)`. If the key doesn't exist, the function
+    /// currently panics.
+    ///
+    /// # Panics
+    /// The function will panic if the key is not present in the
+    /// tree.
+    ///
+    /// # Examples
+    /// Basic usage :
+    ///
+    /// ```
+    /// use abr::ABR;
+    ///
+    /// let mut btree : ABR<_, _> = (1..10).collect();
+    ///
+    /// assert_eq!(btree.remove(&7), Some(()));
+    /// ```
+    pub fn remove(&mut self, key: &K) -> Option<V> {        
         let child_ref = Node::get_node(&mut self.root, key);
-        let found_value = child_ref.take().map(|mut to_remove| {
+        let found_value = ABR::remove_node(child_ref);
+        if found_value.is_some() {
+            self.length -= 1;
+        }
+        found_value
+    }
+
+    fn remove_node(child_ref: &mut OptBoxedNode<K, V>) -> Option<V> {
+        println!("Iteration");
+        child_ref.take().map(|mut to_remove| {
             if !to_remove.is_leaf() {
                 if to_remove.children[0].is_none() {
                     *child_ref = to_remove.children[1].take()
                 } else if to_remove.children[1].is_none() {
                     *child_ref = to_remove.children[0].take()
                 } else {
-                    unimplemented!()
+                    let min_node_ref : &mut OptBoxedNode<K, V> = Node::get_min(&mut to_remove.children[1]);
+                    let min_node : &mut BoxedNode<K, V> = &mut min_node_ref.as_mut().expect("min cannot be none");
+                    
+                    std::mem::swap(&mut min_node.key, &mut to_remove.key);
+                    std::mem::swap(&mut min_node.value, &mut to_remove.value);
+
+                    //*child_ref = ;
+                    //return ABR::remove_node(min_node_ref).expect("remove should work")
                 }
             }
             to_remove.value
-        });
-        if found_value.is_some() {
-            self.length -= 1;
-        }
-        found_value
-        
+        })
     }
 }
 
@@ -274,6 +337,26 @@ impl<K, V> ABR<K, V>
 where
     K: Ord + Display
 {
+    /// Converts the tree into a dot graphviz file and converts it
+    /// to a .png file.
+    ///
+    /// Specifying the path of the file, this function converts the ABR
+    /// into a graphviz file, and calls the `dot` program to convert it
+    /// into a .png image, with the same path and name as the dot file, with
+    /// a `.png` extension.
+    ///
+    /// The K type (for the key) must implement `fmt::Display` to work properly.
+    ///
+    /// # Examples
+    /// Basic usage :
+    ///
+    /// ```
+    /// use abr::ABR;
+    ///
+    /// let btree : ABR<_, _> = (1..10).collect();
+    ///
+    /// btree.to_dot("my_file.dot");
+    /// ```
     pub fn to_dot(&self, name: &str) {
         let output = File::create(name).unwrap();
         let mut bufwriter = BufWriter::new(output);

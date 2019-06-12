@@ -1,8 +1,16 @@
 use abr::ABR;
 
 fn main() {
-    let mut a:ABR<_, _> = (1..10).collect();
-    a.to_dot("examples/remove1.dot");
-    assert_eq!(a.remove(&9), Some(()));
+    let mut a = ABR::new();
+    a.insert(6, "a");
+    a.insert(5, "b");
+    a.insert(4, "c");
+    a.insert(10, "d");
+    a.insert(7, "e");
+    a.insert(8, "f");
+    a.insert(15, "g");
+    a.to_dot("examples/remove.dot");
+    println!("{}", a.remove(&10).unwrap());
+    println!("{:?}", a);
     a.to_dot("examples/remove2.dot");
 }

@@ -1,0 +1,1550 @@
+
+/home/fennec/Projects/ABR/src/main.rs,22
+fn main() {main4,37
+
+/home/fennec/Projects/ABR/src/lib.rs,2032
+type BoxedNode<K, V> = Box<Node<K, V>>;BoxedNode7,134
+type OptBoxedNode<K, V> = Option<BoxedNode<K, V>>;OptBoxedNode8,174
+struct Node<K, V> {Node15,405
+    key: K,key16,425
+    value: V,value17,437
+    children: [OptBoxedNode<K, V>; 2]children18,451
+impl<K, V> Node<K, V>Node21,492
+    fn new(key: K, value: V) -> Node<K, V> {new25,579
+    fn insert(&mut self, key: K, mut value: V) -> Option<V> {insert34,783
+    fn get(&self, key: &K) -> Option<&V> {get56,1540
+    fn get_node<'a>(node: &'a mut OptBoxedNode<K, V>, key: &K) -> &'a mut OptBoxedNode<K, V> {get_node76,2113
+    fn is_leaf(&self) -> bool {is_leaf89,2644
+    fn is_full(&self) -> bool {is_full94,2801
+    fn get_min(node: & OptBoxedNode<K, V>) -> & OptBoxedNode<K, V>  {get_min99,2948
+impl<K, V> Node<K, V>Node108,3248
+    fn to_dot(&self, buf: &mut BufWriter<File>) {to_dot113,3339
+pub struct ABR<K, V> {ABR139,4228
+    root: OptBoxedNode<K, V>,root140,4251
+    length: usizelength141,4281
+impl<K> std::iter::FromIterator<K> for ABR<K,()> where K: Ord {ABR156,4553
+    fn from_iter<T>(iter: T) -> Self where T: IntoIterator<Item=K> {from_iter157,4617
+impl<K, V> ABR<K, V>ABR166,4804
+    pub fn new() -> ABR<K, V> {new181,5107
+    pub fn insert(&mut self, key: K, value: V) -> Option<V> {insert202,5555
+    pub fn contains_key(&self, key: K) -> bool {contains_key232,6362
+    pub fn get(&self, key: K) -> Option<&V> {get256,7052
+    pub fn is_empty(&self) -> bool {is_empty278,7522
+    pub fn remove(&mut self, key: &K) -> Option<V> {remove303,8178
+impl<K, V> ABR<K, V>ABR330,9270
+    pub fn to_dot(&self, name: &str) {to_dot354,9964
+mod abr_tests {abr_tests376,10640
+    fn new() {new380,10691
+    fn insert() {insert386,10804
+    fn insert_multiple() {insert_multiple393,10934
+    fn insert_equal() {insert_equal402,11132
+    fn contains_key() {contains_key411,11328
+    fn contains_key_false() {contains_key_false420,11533
+    fn get() {get429,11744
+    fn get_none() {get_none438,11945
+
+/home/fennec/Projects/ABR/examples/remove.rs,22
+fn main() {main3,15
+
+/home/fennec/Projects/ABR/target/doc/src/abr/lib.rs.html,359
+</section><section id="search" class="content hidden"></section><section class="footer"></sectioHelp883,58049
+</section><section id="search" class="content hidden"></section><section class="footer"></sectioKeyboard Shortcuts883,58049
+</section><section id="search" class="content hidden"></section><section class="footer"></sectioSearch Tricks883,58049
+
+/home/fennec/Projects/ABR/target/doc/light.css,25506
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetbody1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymeth11,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymeth21,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymeth3:not(.impl):not(.method):not(.type):not(.tymethod)1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymeth4:not(.method):not(.type):not(.tymethod)1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymeth1.fqn1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymeth21,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymeth3:not(.impl):not(.method):not(.type):not(.tymethod)1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymeth4:not(.method):not(.type):not(.tymethod)1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.in-band1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.invisible1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.docblock code1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.docblock-short code1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.sidebar1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.sidebar .current1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.source .sidebar1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.sidebar .location1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.sidebar .version1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.sidebar-title1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a:hover1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.line-numbers span1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.line-numbers .line-highlighted1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.docblock h11,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.docblock h21,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.docblock h31,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.docblock h41,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.docblock h51,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.docblock table1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.docblock table td1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.docblock table th1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .method .where1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .fn .where1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .where.fmt-newline1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted a1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted span1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.trait1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.traitalias1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.mod1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.externcrate1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.enum1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.struct1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.union1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.fn1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.method1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.tymethod1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.type1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.foreigntype1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.attr1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.derive1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.macro1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.constant1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.static1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.primitive1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.keyword1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.enum1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.enum1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.enum1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.struct1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.struct1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.struct1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.type1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.type1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.type1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.foreigntype1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.foreigntype1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.foreigntype1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.attr1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.attr1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.attr1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.derive1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.derive1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.derive1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.macro1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.macro1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.macro1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.union1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.union1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.union1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.constant1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.constant1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.constant1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.static1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.static1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.static1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.primitive1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.primitive1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.primitive1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.externcrate1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.mod1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.mod1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.mod1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.trait1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.trait1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.trait1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.traitalias1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.traitalias1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.traitalias1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.fn1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.fn1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.fn1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.method1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.method1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.method1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.tymethod1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.tymethod1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.tymethod1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .fnname1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.keyword1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.keyword1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.keyword1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.rust .comment1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.rust .doccomment1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetnav1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetnav.main .current1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetnav.main .separator1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymeta1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.docblock:not(.type-decl) a:not(.srclink):not(.test-arrow)1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.docblock-short a:not(.srclink):not(.test-arrow)1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.stability a1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.stab.internal a1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymeta.test-arrow1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.collapse-toggle1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#crate-search1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.search-input1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.search-input:focus1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#crate-search+.search-input1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.module-item .stab1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.stab.unstable1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.stab.internal1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.stab.deprecated1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.stab.portability1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.stab>code1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#help>div1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.since1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymettr.result span.primitive::after1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymettr.result span.keyword::after1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.line-numbers :target1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.rust .kw1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.rust .kw-21,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.rust .prelude-ty1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.rust .number1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.rust .string1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.rust .self1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.rust .bool-val1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.rust .prelude-val1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.rust .attribute1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.rust .attribute .ident1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.rust .macro1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.rust .macro-nonterminal1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.rust .lifetime1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.rust .question-mark1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.example-wrap>pre.line-number1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymeta.test-arrow1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymeta.test-arrow:hover1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.toggle-label1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet:target>code1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet:target>.in-band1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.compile_fail1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.compile_fail:hover1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.information:hover+pre.compile_fail1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.ignore1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.ignore:hover1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.information:hover+pre.ignore1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.tooltip.compile_fail1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.information>.compile_fail:hover1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.tooltip.ignore1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.information>.ignore:hover1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.search-failed a1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.tooltip .tooltiptext1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.tooltip .tooltiptext::after1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.important-traits .tooltip .tooltiptext1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#titles>div:not(.selected)1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#titles>div:hover1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#titles>div.selected1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#titles>div>div.count1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.modal1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.modal-content1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.modal-content>.close1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.modal-content>.close:hover1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.modal-content>.whiter1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.modal-content>.close:hover+.whiter1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.sidebar-menu1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.sidebar-elems1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#sidebar-filler1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetkbd1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#theme-picker1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#settings-menu1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#theme-picker:hover1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#theme-picker:focus1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#settings-menu:hover1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#settings-menu:focus1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#theme-choices1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#theme-choices>button:not(:first-child)1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#theme-choices>button:hover1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#theme-choices>button:focus1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#theme-picker1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#all-types1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#all-types:hover1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.search-results td span.alias1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.search-results td span.grey1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#sidebar-toggle1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#sidebar-toggle:hover1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#source-sidebar1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#source-sidebar>.title1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetdiv.files>a:hover1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetdiv.name:hover1,0
+ body{background-color:white;color:black;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetdiv.files>.selected1,0
+
+/home/fennec/Projects/ABR/target/doc/implementors/core/marker/trait.Send.js,53
+(function() {var implementors = {};implementors1,0
+
+/home/fennec/Projects/ABR/target/doc/implementors/core/marker/trait.Sync.js,53
+(function() {var implementors = {};implementors1,0
+
+/home/fennec/Projects/ABR/target/doc/implementors/core/iter/traits/collect/trait.FromIterator.js,53
+(function() {var implementors = {};implementors1,0
+
+/home/fennec/Projects/ABR/target/doc/implementors/core/fmt/trait.Debug.js,53
+(function() {var implementors = {};implementors1,0
+
+/home/fennec/Projects/ABR/target/doc/search-index.js,722
+var N=null,E="",T="t",U="u",searchIndex={};N1,0
+var N=null,E="",T="t",U="u",searchIndex={};E1,0
+var N=null,E="",T="t",U="u",searchIndex={};T1,0
+var N=null,E="",T="t",U="u",searchIndex={};U1,0
+var N=null,E="",T="t",U="u",searchIndex={};searchIndex1,0
+var R=["option","result"];R2,44
+searchIndex["abr"]={"doc":E,"i":[[3,"ABR","abr","A binary search tree with a key/value system",Ndoc3,71
+searchIndex["abr"]={"doc":E,"i":[[3,"ABR","abr","A binary search tree with a key/value system",Ni3,71
+searchIndex["abr"]={"doc":E,"i":[[3,"ABR","abr","A binary search tree with a key/value system",Np3,71
+searchIndex["abr"]={"doc":E,"i":[[3,"ABR","abr","A binary search tree with a key/value system",NsearchIndex3,71
+
+/home/fennec/Projects/ABR/target/doc/normalize.css,8473
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:html2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:body2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:article2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:aside2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:details2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:figcaption2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:figure2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:footer2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:header2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:hgroup2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:main2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:nav2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:section2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:summary2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:audio2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:canvas2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:progress2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:video2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:audio:not([controls] )2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:hidden2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:template2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:a2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:a:active2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:a:hover2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:abbr[title]2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:b2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:strong2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:dfn2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:h12,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:mark2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:small2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:sub2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:sup2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:sup2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:sub2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:img2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:svg:not(:root)2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:figure2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:hr2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:pre2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:code2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:kbd2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:pre2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:samp2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:button2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:input2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:optgroup2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:select2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:textarea2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:button2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:button2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:select2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:button2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:html input[type="button"]2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:input[type="reset"]2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:input[type="submit"]2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:button[disabled]2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:html input[disabled]2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:button::-moz-focus-inner2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:input::-moz-focus-inner2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:input2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:input[type="checkbox"]2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:input[type="radio"]2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:input[type="number"] ::-webkit-inner-spin-button2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:input[type="number"] ::-webkit-outer-spin-button2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:input[type="search"]2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:input[type="search"] ::-webkit-search-cancel-button2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:input[type="search"] ::-webkit-search-decoration2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:fieldset2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:legend2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:textarea2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:optgroup2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:table2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:td2,61
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:th2,61
+
+/home/fennec/Projects/ABR/target/doc/dark.css,25878
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetbody1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymeth11,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymeth21,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymeth3:not(.impl):not(.method):not(.type):not(.tymethod)1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymeth4:not(.method):not(.type):not(.tymethod)1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymeth1.fqn1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymeth21,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymeth3:not(.impl):not(.method):not(.type):not(.tymethod)1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymeth4:not(.method):not(.type):not(.tymethod)1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.in-band1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.invisible1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.docblock code1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.docblock-short code1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.sidebar1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.sidebar .current1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.source .sidebar1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.sidebar .location1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.sidebar .version1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.sidebar-title1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a:hover1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.line-numbers span1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.line-numbers .line-highlighted1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.docblock h11,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.docblock h21,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.docblock h31,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.docblock h41,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.docblock h51,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.docblock table1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.docblock table td1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.docblock table th1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .method .where1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .fn .where1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .where.fmt-newline1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted a1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted span1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.trait1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.traitalias1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.mod1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.externcrate1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.mod1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.externcrate1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.enum1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.struct1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.union1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.fn1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.method1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.tymethod1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.type1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.foreigntype1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.attr1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.derive1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.macro1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.constant1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.static1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.primitive1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .highlighted.keyword1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.enum1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.enum1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.enum1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.struct1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.struct1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.struct1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.type1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.type1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.type1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.foreigntype1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.foreigntype1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.foreigntype1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.attr1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.attr1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.attr1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.derive1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.derive1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.derive1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.macro1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.macro1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.macro1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.union1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.union1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.union1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.constant1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.constant1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.constant1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.static1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.static1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.static1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.primitive1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.primitive1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.primitive1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.externcrate1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.mod1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.mod1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.mod1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.trait1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.trait1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.trait1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.traitalias1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.traitalias1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.traitalias1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.fn1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.fn1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.fn1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.method1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.method1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.method1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.tymethod1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.tymethod1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.tymethod1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content .fnname1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content span.keyword1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.content a.keyword1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.block a.current.keyword1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.rust .comment1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.rust .doccomment1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetnav1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetnav.main .current1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetnav.main .separator1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymeta1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.docblock:not(.type-decl) a:not(.srclink):not(.test-arrow)1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.docblock-short a:not(.srclink):not(.test-arrow)1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.stability a1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.stab.internal a1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymeta.test-arrow1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.collapse-toggle1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#crate-search1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.search-input1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.search-input:focus1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#crate-search+.search-input1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.module-item .stab1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.stab.unstable1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.stab.internal1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.stab.deprecated1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.stab.portability1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.stab>code1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#help>div1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#help dt1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.since1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymettr.result span.primitive::after1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymettr.result span.keyword::after1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.line-numbers :target1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.rust .kw1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.rust .kw-21,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.rust .prelude-ty1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.rust .number1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.rust .string1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.rust .self1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.rust .bool-val1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.rust .prelude-val1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.rust .attribute1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.rust .attribute .ident1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.rust .macro1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.rust .macro-nonterminal1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.rust .lifetime1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.rust .question-mark1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.example-wrap>pre.line-number1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymeta.test-arrow1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymeta.test-arrow:hover1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.toggle-label1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet:target>code1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet:target>.in-band1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.compile_fail1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.compile_fail:hover1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.information:hover+pre.compile_fail1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.ignore1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetpre.ignore:hover1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.information:hover+pre.ignore1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.tooltip.compile_fail1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.information>.compile_fail:hover1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.tooltip.ignore1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.information>.ignore:hover1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.search-failed a1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.tooltip .tooltiptext1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.tooltip .tooltiptext::after1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.important-traits .tooltip .tooltiptext1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#titles>div:not(.selected)1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#titles>div:hover1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#titles>div.selected1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#titles>div>div.count1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.modal1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.modal-content1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.modal-content>.close1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.modal-content>.close:hover1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.modal-content>.whiter1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.modal-content>.close:hover+.whiter1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.sidebar-menu1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.sidebar-elems1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#sidebar-filler1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetkbd1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#theme-picker1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#settings-menu1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#theme-picker:hover1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#theme-picker:focus1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#settings-menu:hover1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#settings-menu:focus1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#theme-choices1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#theme-choices>button:not(:first-child)1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#theme-choices>button:hover1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#theme-choices>button:focus1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#theme-picker1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#all-types1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#all-types:hover1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.search-results td span.alias1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet.search-results td span.grey1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#sidebar-toggle1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#sidebar-toggle:hover1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#source-sidebar1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymet#source-sidebar>.title1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetdiv.files>a:hover1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetdiv.name:hover1,0
+body{background-color:#353535;color:#ddd;}h1,h2,h3:not(.impl):not(.method):not(.type):not(.tymetdiv.files>.selected1,0
+
+/home/fennec/Projects/ABR/target/doc/settings.html,459
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=Rustdoc settings1,0
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=Help1,0
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=Keyboard Shortcuts1,0
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=Search Tricks1,0
+
+/home/fennec/Projects/ABR/target/doc/storage.js,1848
+var resourcesSuffix="";var currentTheme=document.getElementById("themeStyle");var mainTheme=docuresourcesSuffix1,0
+var resourcesSuffix="";var currentTheme=document.getElementById("themeStyle");var mainTheme=docucurrentTheme1,0
+var resourcesSuffix="";var currentTheme=document.getElementById("themeStyle");var mainTheme=documainTheme1,0
+var resourcesSuffix="";var currentTheme=document.getElementById("themeStyle");var mainTheme=docusavedHref1,0
+var resourcesSuffix="";var currentTheme=document.getElementById("themeStyle");var mainTheme=docuhasClass1,0
+var resourcesSuffix="";var currentTheme=document.getElementById("themeStyle");var mainTheme=docuaddClass1,0
+var resourcesSuffix="";var currentTheme=document.getElementById("themeStyle");var mainTheme=docuremoveClass1,0
+var resourcesSuffix="";var currentTheme=document.getElementById("themeStyle");var mainTheme=docuisHidden1,0
+var resourcesSuffix="";var currentTheme=document.getElementById("themeStyle");var mainTheme=docuonEach1,0
+var resourcesSuffix="";var currentTheme=document.getElementById("themeStyle");var mainTheme=docuonEachLazy1,0
+var resourcesSuffix="";var currentTheme=document.getElementById("themeStyle");var mainTheme=docuusableLocalStorage1,0
+var resourcesSuffix="";var currentTheme=document.getElementById("themeStyle");var mainTheme=docuupdateLocalStorage1,0
+var resourcesSuffix="";var currentTheme=document.getElementById("themeStyle");var mainTheme=docugetCurrentValue1,0
+var resourcesSuffix="";var currentTheme=document.getElementById("themeStyle");var mainTheme=docuAnonymousFunction916aa38201001,0
+var resourcesSuffix="";var currentTheme=document.getElementById("themeStyle");var mainTheme=docuAnonymousFunction916aa38202001,0
+var resourcesSuffix="";var currentTheme=document.getElementById("themeStyle");var mainTheme=docuswitchTheme1,0
+
+/home/fennec/Projects/ABR/target/doc/main.js,24897
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){posString1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){posstartsWith1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){posendsWith1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){posDOMTokenList1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){posadd1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){posremove1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){positemTypes1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){possearch_input1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){poscurrentTab1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){postitleBeforeSearch1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){posgetPageId1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){posshowSidebar1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){poshideSidebar1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){posTY_PRIMITIVE1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){posTY_KEYWORD1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){posAnonymousFunction77c2479201001,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){posAnonymousFunction77c2479202001,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){posgetQueryStringParams1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){posbrowserSupportsHistoryApi1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){posmain1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){posAnonymousFunction77c2479204001,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){posAnonymousFunction77c2479203001,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){poshighlightSourceLines1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){posexpandSection1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){posgetVirtualKey1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){posdisplayHelp1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){poshandleEscape1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){poshandleShortcut1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){posfindParentElement1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){posset_fragment1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){posonclick1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){posx1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){posonchange1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){poslevenshtein_row21,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){poslevenshtein1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){positemTypeFromName1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){postransformResults1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){posAnonymousFunction77c2479205001,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){possortResults1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){posextractGenerics1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){pospos1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){poslev1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){poslev1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){poscheckGenerics1,0
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){poscheckType1,0
+            function findArg(obj, val, literalSearch) {findArg15,13026
+            function checkReturned(obj, val, literalSearch) {checkReturned35,13915
+            function checkPath(contains, lastElem, ty) {checkPath64,15107
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return rettypePassesFilter95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retgenerateId95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retid95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retindex95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retresults95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retid95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retindex95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retdontValidate95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retresults_in_args95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retid95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retindex95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retdontValidate95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retresults_returned95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retid95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retindex95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retdontValidate95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retresults95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return rettrimmer95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retid95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retindex95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retdontValidate95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retresults_in_args95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retid95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retindex95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retdontValidate95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retresults_returned95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retid95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retindex95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retdontValidate95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retresults95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c24792060095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retid95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retindex95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retlev95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retresults_in_args95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retid95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retindex95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retlev95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retresults_returned95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retid95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retindex95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retlev95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retresults95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retin_args95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retreturned95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retothers95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retret95,16314
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){posexecQuery1,0
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retvalidateResult95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retgetQuery95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retclick_func95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c24792090095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c24792080095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c24792070095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retmouseover_func95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c247920b0095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c247920a0095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c247920d0095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c247920c0095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retonkeydown95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retinitSearchNav95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retbuildHrefAndPath95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retescape95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retpathSplitter95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c247920e0095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retaddTab95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retmakeTabHeader95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c247920f0095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retonclick95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retshowResults95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retgetSmallest95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retmergeArrays95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retin_args95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retreturned95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retothers95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retresults95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retexecSearch95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retgetFilterCrates95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retsearch95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retty95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retname95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retpaths95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retcrate95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retty95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retname95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retpath95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retdesc95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retparent95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return rettype95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retrow95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retbuildIndex95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retcallback95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retonsubmit95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retonchange95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retonchange95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retonpopstate95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retstartSearch95,16314
+if(!String.prototype.startsWith){String.prototype.startsWith=function(searchString,position){posinitSearch1,0
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retblock95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retinitSidebarItems95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retregister_implementors95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retlabelForToggleButton95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retonEveryMatchingChild95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c24792100095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c24792110095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c24792120095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c24792130095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return rettoggleAllDocs95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c24792140095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retadjustToggle95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c24792150095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retimplHider95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retcollapseDocs95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retcollapser95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c24792160095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c24792170095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retautoCollapse95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return rettoggles95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retinsertAfter95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retcreateSimpleToggle95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return rethideMethodDocs95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retfunc95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retfuncImpl95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retimpl_call95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retnewToggle95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c24792180095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c24792190095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return rettoggleClicked95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c247921a0095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retcreateToggle95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retshowItemDeclarations95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c247921b0095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c247921c0095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retbuildToggleWrapper95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retcreateToggleWrapper95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retitemAttributesFunc95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c247921d0095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retlineNumbersFunc95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c247921f0095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c24792200095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c24792210095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c24792220095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c247921e0095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retshowModal95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return rethideModal95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retonclick95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c24792230095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c24792240095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c24792250095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retprintTab95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retputBackSearch95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retonfocus95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retsearch95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retsidebar_menu95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retonclick95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retonresize95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c24792260095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c24792270095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retAnonymousFunction77c24792280095,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retaddSearchOptions95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retfocusSearchBar95,16314
+                        ret_lev = Math.min(ret_lev, Math.round(lev_total /clength));}}return retdefocusSearchBar95,16314
+
+/home/fennec/Projects/ABR/target/doc/settings.js,453
+(function(){function changeSetting(settingName,isEnabled){updateLocalStorage('rustdoc-'+settingNchangeSetting1,0
+(function(){function changeSetting(settingName,isEnabled){updateLocalStorage('rustdoc-'+settingNgetSettingValue1,0
+(function(){function changeSetting(settingName,isEnabled){updateLocalStorage('rustdoc-'+settingNonchange1,0
+(function(){function changeSetting(settingName,isEnabled){updateLocalStorage('rustdoc-'+settingNsetEvents1,0
+
+/home/fennec/Projects/ABR/target/doc/settings.css,1057
+.setting-line{padding:5px;}.setting-line>div{max-width:calc(100% - 74px);display:inline-block;ve.setting-line1,0
+.setting-line{padding:5px;}.setting-line>div{max-width:calc(100% - 74px);display:inline-block;ve.setting-line>div1,0
+.setting-line{padding:5px;}.setting-line>div{max-width:calc(100% - 74px);display:inline-block;ve.toggle1,0
+.setting-line{padding:5px;}.setting-line>div{max-width:calc(100% - 74px);display:inline-block;ve.toggle input1,0
+.setting-line{padding:5px;}.setting-line>div{max-width:calc(100% - 74px);display:inline-block;ve.slider1,0
+.setting-line{padding:5px;}.setting-line>div{max-width:calc(100% - 74px);display:inline-block;ve.slider:before1,0
+.setting-line{padding:5px;}.setting-line>div{max-width:calc(100% - 74px);display:inline-block;veinput:checked+.slider1,0
+.setting-line{padding:5px;}.setting-line>div{max-width:calc(100% - 74px);display:inline-block;veinput:focus+.slider1,0
+.setting-line{padding:5px;}.setting-line>div{max-width:calc(100% - 74px);display:inline-block;veinput:checked+.slider:before1,0
+
+/home/fennec/Projects/ABR/target/doc/noscript.css,411
+#main>h2+div,#main>h2+h3,#main>h3+div{display:block;}.loading-content{display:none;}#main>h2+div1,0
+#main>h2+div,#main>h2+h3,#main>h3+div{display:block;}.loading-content{display:none;}#main>h2+h31,0
+#main>h2+div,#main>h2+h3,#main>h3+div{display:block;}.loading-content{display:none;}#main>h3+div1,0
+#main>h2+div,#main>h2+h3,#main>h3+div{display:block;}.loading-content{display:none;}.loading-content1,0
+
+/home/fennec/Projects/ABR/target/doc/aliases.js,30
+var ALIASES = {};ALIASES1,0
+
+/home/fennec/Projects/ABR/target/doc/theme.js,403
+var themes = document.getElementById("theme-choices");themes1,0
+var themePicker = document.getElementById("theme-picker");themePicker2,55
+function switchThemeButtonState() {switchThemeButtonState4,115
+function handleThemeButtonsBlur(e) {handleThemeButtonsBlur16,527
+    but.onclick = function(el) {onclick34,1151
+["dark","light"].forEach(function(item) {AnonymousFunctionf7662320010031,1035
+
+/home/fennec/Projects/ABR/target/doc/rustdoc.css,43631
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur*1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urbody1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh11,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh21,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh31,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh11,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh21,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh3:not(.impl):not(.method):not(.type):not(.tymethod):not(.important)1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh4:not(.method):not(.type):not(.tymethod):not(.associatedconstant)1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh1.fqn1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh21,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh3:not(.impl):not(.method):not(.type):not(.tymethod)1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh4:not(.method):not(.type):not(.tymethod):not(.associatedconstant)1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh3.impl1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh3.method1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh4.method1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh3.type1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh4.type1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh4.associatedconstant1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh3.impl1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh3.method1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh3.type1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh11,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh21,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh31,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh41,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.sidebar1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ura.source1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.search-input1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content table :not(code)>a1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.collapse-toggle1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urdiv.item-list .out-of-band1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#source-sidebar1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#sidebar-toggle1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urol1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urul1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urul ul1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urol ul1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urul ol1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urol ol1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urp1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ursummary1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urcode1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urpre1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.docblock code1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.docblock-short code1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.docblock pre code1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.docblock-short pre code1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.docblock code.spotlight1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.docblock code.spotlight :last-child1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urpre1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.source .content pre1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urimg1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.source .content1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urnav.sub1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.sidebar1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.sidebar .block>ul>li1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urnav1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.js-only1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.hidden1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.sidebar img1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.sidebar .location1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.sidebar .version1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.location:empty1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.location a:first-child1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.block1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.block h21,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.block h31,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.block ul1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.block li1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.block a1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.sidebar-title1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.sidebar-links1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.sidebar-links>a1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.sidebar-menu1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.source .content pre.rust1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.rustdoc:not(.source) .example-wrap1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.example-wrap1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.example-wrap>pre.line-number1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.rustdoc:not(.source) .example-wrap>pre.rust1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.rustdoc:not(.source) .example-wrap>pre1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#search1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#results1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#results>table1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content pre.line-numbers1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.line-numbers span1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.docblock-short p1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.docblock-short.nowrap1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.docblock-short p1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.docblock-short code1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.docblock h11,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.docblock h21,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.docblock h31,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.docblock h41,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.docblock h51,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#main>.docblock h11,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#main>.docblock h21,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#main>.docblock h31,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#main>.docblock h41,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#main>.docblock h51,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#main>h2+div1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#main>h2+h31,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#main>h3+div1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.docblock h11,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.docblock h21,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.docblock h31,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.docblock h41,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.docblock h51,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.docblock1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content .out-of-band1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh3.impl>.out-of-band1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh4.method>.out-of-band1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh4>code1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh3>code1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.invisible>code1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.invisible1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content .in-band1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.in-band>code1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#main1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#main>.since1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content table:not(.table-display)1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content td1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content td:first-child1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content td p:first-child1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content td h11,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content td h21,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content tr:first-child td1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.docblock table1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.docblock table td1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.docblock table th1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.fields+table1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content .item-list1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content .multi-column1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content .multi-column li1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content .method1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content .method .where1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content .fn .where1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content .where.fmt-newline1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content .methods>div:not(.important-traits)1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content .docblock>.impl-items1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content .docblock>.impl-items>h41,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content .docblock>.impl-items .table-display1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content .docblock>.impl-items table td1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.toggle-wrapper.marg-left>.collapse-toggle1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content .docblock>.impl-items .table-display1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.impl-items table td1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content .stability code1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content .stability1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.sub-variant>div>.stability1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content .stability::before1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content .impl-items .method1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content .impl-items>.type1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.impl-items>.associatedconstant1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content .impl-items .docblock1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content .impl-items .stability1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content .impl-items>.stability1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.methods>.stability1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content .impl-items>.stability1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.impl-items1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#main>.stability1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urnav1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urnav.main1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urnav.main .current1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urnav.main .separator1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urnav.sum1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urnav.sub form1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urnav.sub1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ura1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.small-section-header:hover>.anchor1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.in-band:hover>.anchor1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.anchor1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.anchor.field1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.small-section-header>.anchor1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.anchor:before1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.docblock a:not(.srclink):not(.test-arrow):hover1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.docblock-short a:not(.srclink):not(.test-arrow):hover1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.stability a1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.invisible>.srclink1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh4>code+.srclink1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.block a.current.crate1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.search-container1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.search-container>div1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#crate-search1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.search-container>.top-button1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.search-input1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#crate-search+.search-input1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.search-input:focus1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.search-results .desc1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.search-results a1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content .search-results td:first-child1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content .search-results td:first-child a1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content .search-results td:first-child a:after1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content .search-results td:first-child a span1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urtr.result span.primitive::after1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urtr.result span.keyword::after1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urbody.blur>:not(#help)1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#help1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#help>div1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#help dt1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#help dd1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#help .infos1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#help h11,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#help h21,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#help>div div1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.stab1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.stab p1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.stab summary1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.stab .emoji1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.module-item .stab1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.module-item.unstable1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.since1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.impl-items .since1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.impl .since1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.impl-items .srclink1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.impl .srclink1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.impl-items code1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.impl code1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.impl-items h41,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh4.impl1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh3.impl1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.variants_table1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.variants_table tbody tr td:first-child1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urtd.summary-column1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.summary1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urpre.rust .question-mark1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ura.test-arrow1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ura.test-arrow:hover1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.section-header:hover a:before1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.section-header:hover a1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.section-header a1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.collapse-toggle1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh3>.collapse-toggle1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh4>.collapse-toggle1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.toggle-wrapper>.collapse-toggle1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.toggle-wrapper1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.toggle-wrapper.collapsed1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.collapse-toggle>.inner1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.collapse-toggle.hidden-default1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.since+.srclink1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.item-spacer1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urspan.since1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.toggle-wrapper>.collapse-toggle1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.variant+.toggle-wrapper+.docblock>p1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.sub-variant1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.sub-variant>h31,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#main>.sub-variant>h31,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.sub-variant>div1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.sub-variant>div>span1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.toggle-label1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.enum>.toggle-wrapper+.docblock1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.struct>.toggle-wrapper+.docblock1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.docblock>.section-header:first-child1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.docblock>.section-header:first-child:hover>a:before1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.enum>.collapsed1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.struct>.collapsed1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#main>.variant1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#main>.structfield1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.attributes1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.toggle-attributes.collapsed1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.impl-items>.toggle-attributes1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.impl-items .attributes1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur:target>code1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urbody1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.rustdoc>.sidebar1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.sidebar>.location1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.sidebar .location:empty1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.sidebar img1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.sidebar-menu1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.sidebar-elems1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.sidebar>.block.version1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urnav.sub1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#main1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content .in-band1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content h4>.out-of-band1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.toggle-wrapper>.collapse-toggle1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.toggle-wrapper1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#search1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content .impl-items .method1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content .impl-items>.type1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.impl-items>.associatedconstant1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.anchor1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh1.fqn1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urnav.sub1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content .out-of-band1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.collapse-toggle1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.information1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.tooltip1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.tooltip .tooltiptext1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.tooltip:hover .tooltiptext1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.tooltip .tooltiptext::after1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.important-traits .tooltip .tooltiptext1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urpre.rust1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.search-failed1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.search-failed>ul1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#titles1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#titles>div1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#titles>div:not(:last-child)1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#titles>div>div.count1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.important-traits1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh4>.important-traits1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#all-types1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#all-types>p1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh4>.important-traits1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#titles>div>div.count1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#titles1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.sidebar.mobile1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.sidebar1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.show-it1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.show-it>.block.items1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.show-it>.block.items>ul1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.show-it>.block.items>ul>li1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.show-it>.block.items>ul>li>a1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#sidebar-filler1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.collapse-toggle1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.impl>.collapse-toggle1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#all-types1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#titles1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#titles>div1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.modal1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.modal-content1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.modal-content>.docblock1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urh3.important1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.modal-content>.docblock>code.content1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.modal-content>.close1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.modal-content>.whiter1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#main>div.important-traits1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.content>.methods>.method>div.important-traits1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urkbd1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.theme-picker1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.theme-picker button1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#settings-menu1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#theme-picker1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#settings-menu1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#theme-choices1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#theme-choices>button1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#theme-choices>button:not(:first-child)1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.theme-picker1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.hidden-by-impl-hider1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.hidden-by-usual-hider1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#implementations-list>h3>span.in-band1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.table-display1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.table-display tr td:first-child1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.table-display tr td:last-child1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.table-display .out-of-band1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#implementors-list>.impl-items .table-display .out-of-band1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.table-display td:hover .anchor1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#main>ul1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#main>ul>li1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur.non-exhaustive1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#sidebar-toggle1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#source-sidebar1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),ur#source-sidebar>.title1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urdiv.children1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urdiv.name1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urdiv.files>a1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urdiv.files>a:hover1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urdiv.name:hover1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urdiv.name.expand+.children1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urdiv.name::before1,0
+ @font-face {font-family:'Fira Sans';font-style:normal;font-weight:400;src:local('Fira Sans'),urdiv.name.expand::before1,0
+
+/home/fennec/Projects/ABR/target/doc/abr/index.html,585
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=[&#x2212;][src]Crate abr1,0
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=Structs1,0
+</td></tr></table></section><section id="search" class="content hidden"></section><section classHelp3,2836
+</td></tr></table></section><section id="search" class="content hidden"></section><section classKeyboard Shortcuts3,2836
+</td></tr></table></section><section id="search" class="content hidden"></section><section classSearch Tricks3,2836
+
+/home/fennec/Projects/ABR/target/doc/abr/sidebar-items.js,0
+
+/home/fennec/Projects/ABR/target/doc/abr/struct.ABR.html,4399
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=[&#x2212;][src]Struct abr::ABR1,0
+</div><h2 id='methods' class='small-section-header'>Methods<a href='#methods' class='anchor'></aMethods4,3999
+</div><h2 id='methods' class='small-section-header'>Methods<a href='#methods' class='anchor'></aimpl&lt;K, V&gt; ABR&lt;K, V&gt; where&nbsp;&nbsp;&nbsp;&nbsp;K: Ord,&nbsp;[src]4,3999
+<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>Examples5,4996
+<h1 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h1>Examples15,6130
+<h1 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h1>Examples27,7367
+<h1 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h1>Examples44,9234
+<h1 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h1>Examples58,10878
+<h1 id="panics" class="section-header"><a href="#panics">Panics</a></h1>Panics74,12533
+<h1 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h1>Examples77,12676
+</div></div><h3 id='impl-1' class='impl'><code class='in-band'>impl&lt;K, V&gt; <a class="structimpl&lt;K, V&gt; ABR&lt;K, V&gt; where&nbsp;&nbsp;&nbsp;&nbsp;K: Ord + Display,&nbsp;[src]86,13553
+<h1 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h1>Examples93,14997
+</div></div><h2 id='implementations' class='small-section-header'>Trait Implementations<a href='Trait Implementations102,15726
+</div></div><h2 id='implementations' class='small-section-header'>Trait Implementations<a href='impl&lt;K:&nbsp;Debug, V:&nbsp;Debug&gt; Debug for ABR&lt;K, V&gt;[src]102,15726
+</div></div><h3 id='impl-FromIterator%3CK%3E' class='impl'><code class='in-band'>impl&lt;K&gt; <impl&lt;K&gt; FromIterator&lt;K&gt; for ABR&lt;K, ()&gt; where&nbsp;&nbsp;&nbsp;&nbsp;K: Ord,&nbsp;[src]103,17352
+<h1 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h1>Examples106,18337
+</div></div></div><h2 id='synthetic-implementations' class='small-section-header'>Auto Trait ImpAuto Trait Implementations114,19824
+</div></div></div><h2 id='synthetic-implementations' class='small-section-header'>Auto Trait Impimpl&lt;K, V&gt; Send for ABR&lt;K, V&gt; where&nbsp;&nbsp;&nbsp;&nbsp;K: Send,&nbsp;&nbsp;&nbsp;&nbsp;V: Send,&nbsp;114,19824
+</div></div></div><h2 id='synthetic-implementations' class='small-section-header'>Auto Trait Impimpl&lt;K, V&gt; Sync for ABR&lt;K, V&gt; where&nbsp;&nbsp;&nbsp;&nbsp;K: Sync,&nbsp;&nbsp;&nbsp;&nbsp;V: Sync,&nbsp;114,19824
+</div></div></div><h2 id='synthetic-implementations' class='small-section-header'>Auto Trait ImpBlanket Implementations114,19824
+</div></div></div><h2 id='synthetic-implementations' class='small-section-header'>Auto Trait Impimpl&lt;T&gt; From for T[src]114,19824
+</div></div><h3 id='impl-Into' class='impl'><code class='in-band'>impl&lt;T, U&gt; <a class="traimpl&lt;T, U&gt; Into for T where&nbsp;&nbsp;&nbsp;&nbsp;U: From&lt;T&gt;,&nbsp;[src]115,22503
+</div></div><h3 id='impl-TryFrom' class='impl'><code class='in-band'>impl&lt;T, U&gt; <a class="impl&lt;T, U&gt; TryFrom for T where&nbsp;&nbsp;&nbsp;&nbsp;U: Into&lt;T&gt;,&nbsp;[src]116,23533
+</div></div><h3 id='impl-Borrow' class='impl'><code class='in-band'>impl&lt;T&gt; <a class="traiimpl&lt;T&gt; Borrow for T where&nbsp;&nbsp;&nbsp;&nbsp;T: ?Sized,&nbsp;[src]118,25499
+</div></div><h3 id='impl-Any' class='impl'><code class='in-band'>impl&lt;T&gt; <a class="trait" impl&lt;T&gt; Any for T where&nbsp;&nbsp;&nbsp;&nbsp;T: 'static + ?Sized,&nbsp;[src]119,26753
+</div></div><h3 id='impl-BorrowMut' class='impl'><code class='in-band'>impl&lt;T&gt; <a class="timpl&lt;T&gt; BorrowMut for T where&nbsp;&nbsp;&nbsp;&nbsp;T: ?Sized,&nbsp;[src]120,28024
+</div></div><h3 id='impl-TryInto' class='impl'><code class='in-band'>impl&lt;T, U&gt; <a class="impl&lt;T, U&gt; TryInto for T where&nbsp;&nbsp;&nbsp;&nbsp;U: TryFrom&lt;T&gt;,&nbsp;[src]121,29325
+</div></div></div></section><section id="search" class="content hidden"></section><section classHelp123,31480
+</div></div></div></section><section id="search" class="content hidden"></section><section classKeyboard Shortcuts123,31480
+</div></div></div></section><section id="search" class="content hidden"></section><section classSearch Tricks123,31480
+
+/home/fennec/Projects/ABR/target/doc/abr/all.html,595
+     <span class='in-band'>List of all items</span></h1><h3 id='Structs'>Structs</h3><ul class='[&#x2212;] List of all items3,2106
+     <span class='in-band'>List of all items</span></h1><h3 id='Structs'>Structs</h3><ul class='Structs3,2106
+     <span class='in-band'>List of all items</span></h1><h3 id='Structs'>Structs</h3><ul class='Help3,2106
+     <span class='in-band'>List of all items</span></h1><h3 id='Structs'>Structs</h3><ul class='Keyboard Shortcuts3,2106
+     <span class='in-band'>List of all items</span></h1><h3 id='Structs'>Structs</h3><ul class='Search Tricks3,2106
+
+/home/fennec/Projects/ABR/target/doc/source-files.js,400
+var N = null;var sourcesIndex = {};N1,0
+var N = null;var sourcesIndex = {};sourcesIndex1,0
+sourcesIndex["abr"] = {"name":"","dirs":[],"files":["lib.rs"]};name2,36
+sourcesIndex["abr"] = {"name":"","dirs":[],"files":["lib.rs"]};dirs2,36
+sourcesIndex["abr"] = {"name":"","dirs":[],"files":["lib.rs"]};files2,36
+sourcesIndex["abr"] = {"name":"","dirs":[],"files":["lib.rs"]};sourcesIndex2,36
+
+/home/fennec/Projects/ABR/target/doc/source-script.js,833
+function getCurrentFilePath(){var parts=window.location.pathname.split("/");var rootPathParts=wigetCurrentFilePath1,0
+function getCurrentFilePath(){var parts=window.location.pathname.split("/");var rootPathParts=wionclick1,0
+function getCurrentFilePath(){var parts=window.location.pathname.split("/");var rootPathParts=wicreateDirEntry1,0
+function getCurrentFilePath(){var parts=window.location.pathname.split("/");var rootPathParts=witoggleSidebar1,0
+function getCurrentFilePath(){var parts=window.location.pathname.split("/");var rootPathParts=wicreateSidebarToggle1,0
+function getCurrentFilePath(){var parts=window.location.pathname.split("/");var rootPathParts=wiAnonymousFunction2c81b9a001001,0
+function getCurrentFilePath(){var parts=window.location.pathname.split("/");var rootPathParts=wicreateSourceSidebar1,0
+
+/home/fennec/Projects/ABR/target/.rustc_info.json,1442
+{"rustc_fingerprint":16686533352291812019,"outputs":{"1164083562126845933":["rustc 1.35.0 (3c235rustc_fingerprint1,0
+{"rustc_fingerprint":16686533352291812019,"outputs":{"1164083562126845933":["rustc 1.35.0 (3c23501,0
+{"rustc_fingerprint":16686533352291812019,"outputs":{"1164083562126845933":["rustc 1.35.0 (3c23511,0
+{"rustc_fingerprint":16686533352291812019,"outputs":{"1164083562126845933":["rustc 1.35.0 (3c23511640835621268459331,0
+{"rustc_fingerprint":16686533352291812019,"outputs":{"1164083562126845933":["rustc 1.35.0 (3c23501,0
+{"rustc_fingerprint":16686533352291812019,"outputs":{"1164083562126845933":["rustc 1.35.0 (3c23511,0
+{"rustc_fingerprint":16686533352291812019,"outputs":{"1164083562126845933":["rustc 1.35.0 (3c23516173490193601574631,0
+{"rustc_fingerprint":16686533352291812019,"outputs":{"1164083562126845933":["rustc 1.35.0 (3c23501,0
+{"rustc_fingerprint":16686533352291812019,"outputs":{"1164083562126845933":["rustc 1.35.0 (3c23511,0
+{"rustc_fingerprint":16686533352291812019,"outputs":{"1164083562126845933":["rustc 1.35.0 (3c235153375067751543448761,0
+{"rustc_fingerprint":16686533352291812019,"outputs":{"1164083562126845933":["rustc 1.35.0 (3c235outputs1,0
+{"rustc_fingerprint":16686533352291812019,"outputs":{"1164083562126845933":["rustc 1.35.0 (3c23596827060321873465511,0
+{"rustc_fingerprint":16686533352291812019,"outputs":{"1164083562126845933":["rustc 1.35.0 (3c235successes1,0
+
+/home/fennec/Projects/ABR/target/debug/abr-c50fd65f033a7447.d,0
+
+/home/fennec/Projects/ABR/target/debug/libabr.d,0
+
+/home/fennec/Projects/ABR/target/debug/.fingerprint/abr-1e2299e84f535f73/example-remove-1e2299e84f535f73.json,2013
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":1499665578rustc1,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":1499665578features1,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":1499665578target1,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":1499665578profile1,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":1499665578path1,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":149966557801,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":149966557801,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":149966557811,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":149966557821,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":1499665578deps1,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":149966557801,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":149966557801,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":149966557801,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":149966557811,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":149966557811,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":1499665578MtimeBased1,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":1499665578local1,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":1499665578rustflags1,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":1499665578metadata1,0
+
+/home/fennec/Projects/ABR/target/debug/.fingerprint/abr-ed9b2be063f27727/test-example-remove-ed9b2be063f27727.json,2013
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":8248545651rustc1,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":8248545651features1,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":8248545651target1,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":8248545651profile1,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":8248545651path1,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":824854565101,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":824854565101,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":824854565111,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":824854565121,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":8248545651deps1,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":824854565101,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":824854565101,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":824854565101,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":824854565111,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":824854565111,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":8248545651MtimeBased1,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":8248545651local1,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":8248545651rustflags1,0
+{"rustc":11662075050264400882,"features":"[]","target":11414279390639189905,"profile":8248545651metadata1,0
+
+/home/fennec/Projects/ABR/target/debug/.fingerprint/abr-a30ba0d9c191cbf0/bin-abr-a30ba0d9c191cbf0.json,1601
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":14996655781rustc1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":14996655781features1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":14996655781target1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":14996655781profile1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":14996655781path1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":14996655781deps1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":1499665578101,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":1499665578101,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":1499665578101,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":1499665578111,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":1499665578111,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":14996655781MtimeBased1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":14996655781local1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":14996655781rustflags1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":14996655781metadata1,0
+
+/home/fennec/Projects/ABR/target/debug/.fingerprint/abr-b4c3ce0d458684ca/bin-abr-b4c3ce0d458684ca.json,2013
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":14996655781rustc1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":14996655781features1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":14996655781target1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":14996655781profile1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":14996655781path1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":1499665578101,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":1499665578101,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":1499665578111,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":1499665578121,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":14996655781deps1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":1499665578101,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":1499665578101,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":1499665578101,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":1499665578111,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":1499665578111,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":14996655781MtimeBased1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":14996655781local1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":14996655781rustflags1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":14996655781metadata1,0
+
+/home/fennec/Projects/ABR/target/debug/.fingerprint/abr-82e0a957b244114e/test-bin-abr-82e0a957b244114e.json,1601
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":82485456512rustc1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":82485456512features1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":82485456512target1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":82485456512profile1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":82485456512path1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":82485456512deps1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":8248545651201,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":8248545651201,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":8248545651201,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":8248545651211,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":8248545651211,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":82485456512MtimeBased1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":82485456512local1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":82485456512rustflags1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":82485456512metadata1,0
+
+/home/fennec/Projects/ABR/target/debug/.fingerprint/abr-895782a0236f56aa/lib-abr-895782a0236f56aa.json,1601
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":149966557813rustc1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":149966557813features1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":149966557813target1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":149966557813profile1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":149966557813path1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":149966557813deps1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":14996655781301,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":14996655781301,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":14996655781301,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":14996655781311,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":14996655781311,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":149966557813MtimeBased1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":149966557813local1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":149966557813rustflags1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":149966557813metadata1,0
+
+/home/fennec/Projects/ABR/target/debug/.fingerprint/abr-6c7afcbc5f383099/doc-lib-abr-6c7afcbc5f383099.json,1192
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":173669590720rustc1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":173669590720features1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":173669590720target1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":173669590720profile1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":173669590720path1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":173669590720deps1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":17366959072001,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":173669590720Precalculated1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":173669590720local1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":173669590720rustflags1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":173669590720metadata1,0
+
+/home/fennec/Projects/ABR/target/debug/.fingerprint/abr-1c0e5962fd02467b/test-lib-abr-1c0e5962fd02467b.json,1601
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":824854565124rustc1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":824854565124features1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":824854565124target1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":824854565124profile1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":824854565124path1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":824854565124deps1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":82485456512401,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":82485456512401,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":82485456512401,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":82485456512411,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":82485456512411,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":824854565124MtimeBased1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":824854565124local1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":824854565124rustflags1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":824854565124metadata1,0
+
+/home/fennec/Projects/ABR/target/debug/.fingerprint/abr-c50fd65f033a7447/test-bin-abr-c50fd65f033a7447.json,2013
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":82485456512rustc1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":82485456512features1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":82485456512target1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":82485456512profile1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":82485456512path1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":8248545651201,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":8248545651201,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":8248545651211,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":8248545651221,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":82485456512deps1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":8248545651201,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":8248545651201,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":8248545651201,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":8248545651211,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":8248545651211,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":82485456512MtimeBased1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":82485456512local1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":82485456512rustflags1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":82485456512metadata1,0
+
+/home/fennec/Projects/ABR/target/debug/.fingerprint/ABR-51ea4158a552059c/test-bin-ABR-51ea4158a552059c.json,1601
+{"rustc":11662075050264400882,"features":"[]","target":13488340451950035870,"profile":8248545651rustc1,0
+{"rustc":11662075050264400882,"features":"[]","target":13488340451950035870,"profile":8248545651features1,0
+{"rustc":11662075050264400882,"features":"[]","target":13488340451950035870,"profile":8248545651target1,0
+{"rustc":11662075050264400882,"features":"[]","target":13488340451950035870,"profile":8248545651profile1,0
+{"rustc":11662075050264400882,"features":"[]","target":13488340451950035870,"profile":8248545651path1,0
+{"rustc":11662075050264400882,"features":"[]","target":13488340451950035870,"profile":8248545651deps1,0
+{"rustc":11662075050264400882,"features":"[]","target":13488340451950035870,"profile":824854565101,0
+{"rustc":11662075050264400882,"features":"[]","target":13488340451950035870,"profile":824854565101,0
+{"rustc":11662075050264400882,"features":"[]","target":13488340451950035870,"profile":824854565101,0
+{"rustc":11662075050264400882,"features":"[]","target":13488340451950035870,"profile":824854565111,0
+{"rustc":11662075050264400882,"features":"[]","target":13488340451950035870,"profile":824854565111,0
+{"rustc":11662075050264400882,"features":"[]","target":13488340451950035870,"profile":8248545651MtimeBased1,0
+{"rustc":11662075050264400882,"features":"[]","target":13488340451950035870,"profile":8248545651local1,0
+{"rustc":11662075050264400882,"features":"[]","target":13488340451950035870,"profile":8248545651rustflags1,0
+{"rustc":11662075050264400882,"features":"[]","target":13488340451950035870,"profile":8248545651metadata1,0
+
+/home/fennec/Projects/ABR/target/debug/.fingerprint/abr-5181231ecefec7e0/bin-abr-5181231ecefec7e0.json,2013
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":14891217944rustc1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":14891217944features1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":14891217944target1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":14891217944profile1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":14891217944path1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":1489121794401,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":1489121794401,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":1489121794411,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":1489121794421,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":14891217944deps1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":1489121794401,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":1489121794401,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":1489121794401,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":1489121794411,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":1489121794411,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":14891217944MtimeBased1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":14891217944local1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":14891217944rustflags1,0
+{"rustc":11662075050264400882,"features":"[]","target":7642160190531056327,"profile":14891217944metadata1,0
+
+/home/fennec/Projects/ABR/target/debug/.fingerprint/abr-32e8e26c3ddf3e2e/lib-abr-32e8e26c3ddf3e2e.json,1601
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":148912179448rustc1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":148912179448features1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":148912179448target1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":148912179448profile1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":148912179448path1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":148912179448deps1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":14891217944801,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":14891217944801,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":14891217944801,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":14891217944811,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":14891217944811,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":148912179448MtimeBased1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":148912179448local1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":148912179448rustflags1,0
+{"rustc":11662075050264400882,"features":"[]","target":846653938898159744,"profile":148912179448metadata1,0
+
+/home/fennec/Projects/ABR/target/debug/deps/abr-895782a0236f56aa.d,0
+
+/home/fennec/Projects/ABR/target/debug/deps/abr-5181231ecefec7e0.d,0
+
+/home/fennec/Projects/ABR/target/debug/deps/abr-a30ba0d9c191cbf0.d,0
+
+/home/fennec/Projects/ABR/target/debug/deps/abr-c50fd65f033a7447.d,0
+
+/home/fennec/Projects/ABR/target/debug/deps/abr-b4c3ce0d458684ca.d,0
+
+/home/fennec/Projects/ABR/target/debug/deps/abr-32e8e26c3ddf3e2e.d,0
+
+/home/fennec/Projects/ABR/target/debug/deps/ABR-51ea4158a552059c.d,0
+
+/home/fennec/Projects/ABR/target/debug/deps/abr-1c0e5962fd02467b.d,0
+
+/home/fennec/Projects/ABR/target/debug/deps/abr-82e0a957b244114e.d,0
+
+/home/fennec/Projects/ABR/target/debug/examples/remove.d,0
+
+/home/fennec/Projects/ABR/target/debug/examples/remove-ed9b2be063f27727.d,0
+
+/home/fennec/Projects/ABR/target/debug/examples/remove-1e2299e84f535f73.d,0
+
+/home/fennec/Projects/ABR/target/debug/ABR-51ea4158a552059c.d,0
+
+/home/fennec/Projects/ABR/target/debug/abr-1c0e5962fd02467b.d,0
+
+/home/fennec/Projects/ABR/target/debug/abr-82e0a957b244114e.d,0
+
+/home/fennec/Projects/ABR/target/debug/abr.d,0
