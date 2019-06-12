@@ -1,5 +1,5 @@
 #![warn(clippy::all)]
-use abr::ABR;
+use abr::abr::ABR;
 
 fn main() {
     let mut a = ABR::new();

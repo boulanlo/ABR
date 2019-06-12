@@ -1,4 +1,4 @@
-use abr::ABR;
+use abr::abr::ABR;
 
 fn main() {
     let mut a = ABR::new();
@@ -10,7 +10,5 @@ fn main() {
     a.insert(8, "f");
     a.insert(15, "g");
     a.to_dot("examples/remove.dot");
-    println!("{}", a.remove(&10).unwrap());
-    println!("{:?}", a);
     a.to_dot("examples/remove2.dot");
 }
