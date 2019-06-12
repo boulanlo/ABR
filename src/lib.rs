@@ -90,11 +90,6 @@ where K: Ord
         self.children.iter().all(|c| c.is_none())
     }
 
-    /// Returns whether or not the node is full (has two children).
-    fn is_full(&self) -> bool {
-        self.children.iter().all(|c| c.is_some())
-    }
-
     /// Fetches and returns the minimum leaf from a node.
     fn get_min(node: &mut OptBoxedNode<K, V>) -> &mut OptBoxedNode<K, V>  {
         if node.as_ref().expect("get min on non present key").children[0].is_some() {
@@ -310,25 +305,28 @@ where K: Ord
     }
 
     fn remove_node(child_ref: &mut OptBoxedNode<K, V>) -> Option<V> {
-        println!("Iteration");
         child_ref.take().map(|mut to_remove| {
             if !to_remove.is_leaf() {
                 if to_remove.children[0].is_none() {
-                    *child_ref = to_remove.children[1].take()
+                    *child_ref = to_remove.children[1].take();
+                    to_remove.value
                 } else if to_remove.children[1].is_none() {
-                    *child_ref = to_remove.children[0].take()
+                    *child_ref = to_remove.children[0].take();
+                    to_remove.value
                 } else {
-                    let min_node_ref : &mut OptBoxedNode<K, V> = Node::get_min(&mut to_remove.children[1]);
-                    let min_node : &mut BoxedNode<K, V> = &mut min_node_ref.as_mut().expect("min cannot be none");
-                    
-                    std::mem::swap(&mut min_node.key, &mut to_remove.key);
-                    std::mem::swap(&mut min_node.value, &mut to_remove.value);
+                    let min_node_ref = Node::get_min(&mut to_remove.children[1]);
+                    std::mem::swap(&mut min_node_ref.as_mut().unwrap().key, &mut to_remove.key);
 
-                    //*child_ref = ;
-                    //return ABR::remove_node(min_node_ref).expect("remove should work")
+                    let mut min_node_value = ABR::remove_node(min_node_ref).unwrap();
+                    std::mem::swap(&mut min_node_value, &mut to_remove.value);      
+
+                    *child_ref = Some(to_remove); // reconnect child_ref to its son since we remove another node
+                    
+                    min_node_value
                 }
+            } else {
+                to_remove.value
             }
-            to_remove.value
         })
     }
 }
