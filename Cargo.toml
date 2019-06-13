@@ -4,5 +4,19 @@ version = "0.1.0"
 authors = ["Louis Boulanger <louis.boulanger74@hotmail.fr>"]
 edition = "2018"
 
+[features]
+# enable this to log using rayon_logs
+logs = ["rayon_logs"]
+
 [dependencies]
-rayon_adaptive = {git="https://github.com/wagnerf42/rayon-adaptive", branch="new_api"}
+# rayon_adaptive = {git="https://github.com/wagnerf42/rayon-adaptive", branch="new_api"}
+# rayon_adaptive = {path="../rayon-adaptive"}
+rayon_logs = {optional=true, git="https://github.com/wagnerf42/rayon-logs"} 
+time = "*"
+rand = "*"
+rayon= "*"
+#rayon_adaptive = {path="../rayon-adaptive", features=["logs"]}
+[target.'cfg(feature = "logs")'.dependencies]
+rayon_adaptive={git="https://github.com/wagnerf42/rayon-adaptive", branch="new_api", default-features = false, features = ["logs"]}
+[target.'cfg(not(feature = "logs"))'.dependencies]
+rayon_adaptive={git="https://github.com/wagnerf42/rayon-adaptive", branch="new_api"}

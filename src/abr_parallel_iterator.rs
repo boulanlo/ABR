@@ -1,7 +1,7 @@
 extern crate rayon_adaptive;
 use crate::abr::ABR;
-use crate::node::BoxedNode;
 use crate::abr_iterator::ABRIterator;
+use crate::node::BoxedNode;
 use rayon_adaptive::prelude::*;
 use rayon_adaptive::BasicPower;
 use std::collections::VecDeque;
@@ -33,6 +33,7 @@ impl<'a, K, V> Divisible for ABRParallelIterator<'a, K, V> {
     }
 
     fn divide_at(mut self, index: usize) -> (Self, Self) {
+        println!("divide: {}", index);
         let new_vec = if index == 0 {
             None
         } else {
@@ -56,7 +57,7 @@ where
 
     fn to_sequential(self) -> Self::SequentialIterator {
         ABRIterator {
-            visited_nodes: self.visited_nodes
+            visited_nodes: self.visited_nodes,
         }
     }
 

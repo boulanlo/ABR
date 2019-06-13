@@ -1,11 +1,11 @@
-use std::fs::File;
-use std::io::{Write, BufWriter};
-use std::process::Command;
-use std::fmt::Display;
-use crate::node::OptBoxedNode;
-use crate::node::Node;
 use crate::abr_iterator::ABRIterator;
-
+use crate::abr_parallel_iterator::ABRParallelIterator;
+use crate::node::Node;
+use crate::node::OptBoxedNode;
+use std::fmt::Display;
+use std::fs::File;
+use std::io::{BufWriter, Write};
+use std::process::Command;
 
 /// A binary search tree with a key/value system
 ///
@@ -14,7 +14,7 @@ use crate::abr_iterator::ABRIterator;
 #[derive(Debug)]
 pub struct ABR<K, V> {
     pub root: OptBoxedNode<K, V>,
-    pub length: usize
+    pub length: usize,
 }
 
 /// Enables collection into a tree
@@ -29,8 +29,14 @@ pub struct ABR<K, V> {
 ///
 /// let mut btree : ABR<_, _> = (1..10).collect();
 /// ```
-impl<K> std::iter::FromIterator<K> for ABR<K,()> where K: Ord {
-    fn from_iter<T>(iter: T) -> Self where T: IntoIterator<Item=K> {
+impl<K> std::iter::FromIterator<K> for ABR<K, ()>
+where
+    K: Ord,
+{
+    fn from_iter<T>(iter: T) -> Self
+    where
+        T: IntoIterator<Item = K>,
+    {
         let mut a = ABR::new();
         for key in iter {
             a.insert(key, ());
@@ -40,7 +46,8 @@ impl<K> std::iter::FromIterator<K> for ABR<K,()> where K: Ord {
 }
 
 impl<K, V> ABR<K, V>
-where K: Ord
+where
+    K: Ord,
 {
     /// Create a new, empty binary search tree.
     ///
@@ -57,7 +64,7 @@ where K: Ord
     pub fn new() -> ABR<K, V> {
         ABR {
             root: None,
-            length: 0
+            length: 0,
         }
     }
 
@@ -80,7 +87,7 @@ where K: Ord
             let result = node.insert(key, value);
             if result.is_none() {
                 self.length += 1;
-            }            
+            }
             result
         } else {
             self.root = Some(Box::new(Node::new(key, value)));
@@ -176,7 +183,7 @@ where K: Ord
     ///
     /// assert_eq!(btree.remove(&7), Some(()));
     /// ```
-    pub fn remove(&mut self, key: &K) -> Option<V> {        
+    pub fn remove(&mut self, key: &K) -> Option<V> {
         let child_ref = Node::get_node(&mut self.root, key);
         let found_value = ABR::remove_node(child_ref);
         if found_value.is_some() {
@@ -199,10 +206,10 @@ where K: Ord
                     std::mem::swap(&mut min_node_ref.as_mut().unwrap().key, &mut to_remove.key);
 
                     let mut min_node_value = ABR::remove_node(min_node_ref).unwrap();
-                    std::mem::swap(&mut min_node_value, &mut to_remove.value);      
+                    std::mem::swap(&mut min_node_value, &mut to_remove.value);
 
                     *child_ref = Some(to_remove); // reconnect child_ref to its son since we remove another node
-                    
+
                     min_node_value
                 }
             } else {
@@ -225,11 +232,17 @@ where K: Ord
     pub fn iter<'a>(&'a self) -> ABRIterator<'a, K, V> {
         ABRIterator::new(self)
     }
+
+    /// Get a parallel iterator (using rayon_adaptive) from the tree,
+    /// allowing parallel operations like sum or fold.
+    pub fn par_iter<'a>(&'a self) -> ABRParallelIterator<'a, K, V> {
+        ABRParallelIterator::new(self)
+    }
 }
 
 impl<K, V> ABR<K, V>
 where
-    K: Ord + Display
+    K: Ord + Display,
 {
     /// Converts the tree into a dot graphviz file and converts it
     /// to a .png file.
@@ -244,19 +257,18 @@ where
         let output = File::create(name).unwrap();
         let mut bufwriter = BufWriter::new(output);
 
-        bufwriter.write(b"digraph BST {\nnode [fontname=\"Arial\"];\n").unwrap();
+        bufwriter
+            .write(b"digraph BST {\nnode [fontname=\"Arial\"];\n")
+            .unwrap();
         if let Some(node) = &self.root {
             node.to_dot(&mut bufwriter);
         }
         bufwriter.write(b"\n}").unwrap();
 
         bufwriter.flush().unwrap();
-        
+
         let mut result = File::create(format!("{}.png", name)).unwrap();
-        let output_dot = Command::new("dot")
-            .arg("-Tpng")
-            .arg(name)
-            .output().unwrap();
+        let output_dot = Command::new("dot").arg("-Tpng").arg(name).output().unwrap();
         result.write(&output_dot.stdout).unwrap();
     }
 }
@@ -264,10 +276,10 @@ where
 #[cfg(test)]
 mod abr_tests {
     use super::*;
-    
+
     #[test]
     fn new() {
-        let a : ABR<u32, u32> = ABR::new();
+        let a: ABR<u32, u32> = ABR::new();
         assert!(a.root.is_none());
     }
 
