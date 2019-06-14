@@ -1,5 +1,6 @@
 use abr::abr::ABR;
 use rayon_adaptive::prelude::*;
+use rayon_adaptive::Policy;
 use std::iter::repeat_with;
 use time::precise_time_ns;
 #[cfg(feature = "logs")]
@@ -8,6 +9,16 @@ extern crate rayon_logs as rayon;
 use rayon::ThreadPoolBuilder;
 
 fn main() {
+    /*let tree: ABR<_, _> = vec![5, 3, 7, 1, 4, 2, 6].into_iter().collect();
+    let results: u32 = tree
+        .par_iter()
+        .map(|n| n.key)
+        //.with_policy(Policy::Sequential)
+        .sum();
+    //let results: u32 = tree.par_iter().to_sequential().map(|n| n.key).sum();
+    println!("{}", results);
+    */
+
     let input: Vec<u64> = repeat_with(rand::random).take(1000_000).collect();
     let tree: ABR<_, _> = input.iter().collect();
     let start = precise_time_ns();

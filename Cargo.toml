@@ -15,6 +15,7 @@ rayon_logs = {optional=true, git="https://github.com/wagnerf42/rayon-logs"}
 time = "*"
 rand = "*"
 rayon= "*"
+itertools= "*"
 #rayon_adaptive = {path="../rayon-adaptive", features=["logs"]}
 [target.'cfg(feature = "logs")'.dependencies]
 rayon_adaptive={git="https://github.com/wagnerf42/rayon-adaptive", branch="new_api", default-features = false, features = ["logs"]}

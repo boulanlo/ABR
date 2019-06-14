@@ -1,4 +1,28 @@
-- Implement BST (remember mem::swap and Option::take)
-- Tests !
-- seq. iterator (depth first)
-- parallelism
+* deque : noeuds (pas de bool)
+* elem courant : option de &'a noeud (on y met la racine au début)
+* vec : fil de fer
+
+cas :
+1. le deque n'est pas vide
+ - pop front -> devient l'elem courant de droite
+2. le deque est vide et il reste l'elem courant
+ - on part de l'elem
+ - on a un fil de fer et un indice
+ - on descend, et on regarde de quel côté l'enfant est (sur les noeuds de 1)
+ - si il est petit, on insère à i
+ - si il est grand : on insère à i + 1 et change i = i + 1
+ - jusqu'à noeud d'arité 2
+
+itérateur qui descend la longue branche
+ -> std::iter::successors (option, fn option -> option) jusqu'à renvoyer none
+ successor(courant, |n| si n a 1 fils => Some(fils) sinon None
+ -> itertools : tuplewindows par paquet de 2
+ 
+ ->fold ((courant.into_iter().collect(), 0), |(ancien vec, i), (noeud pere, noeud fils)|
+   -> calcul direction
+      si droit : i+= 1
+      inserer enfant
+
+à la fin, on a le vecteur avec des trucs à droite et à gauche, et le noeud à deux enfants dans l'arbre
+on met l'enfant gauche de cet enfant + les trucs à gauche dans la division de gauche, et le noeud et
+les trucs à droite dans la division de droite.

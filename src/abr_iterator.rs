@@ -7,7 +7,9 @@ use std::collections::VecDeque;
 /// This iterator goes through the tree in order, providing an ordered
 /// list of elements from the tree.
 pub struct ABRIterator<'a, K, V> {
-    pub visited_nodes: VecDeque<(&'a BoxedNode<K, V>, bool)>,
+    pub visited_nodes: VecDeque<&'a BoxedNode<K, V>>,
+    pub current_node: Option<&'a BoxedNode<K, V>>,
+    pub stored_nodes: Vec<&'a BoxedNode<K, V>>,
 }
 
 impl<'a, K, V> ABRIterator<'a, K, V> {
@@ -22,7 +24,9 @@ impl<'a, K, V> ABRIterator<'a, K, V> {
     /// ```
     pub fn new(tree: &'a ABR<K, V>) -> ABRIterator<'a, K, V> {
         ABRIterator {
-            visited_nodes: tree.root.as_ref().into_iter().map(|r| (r, false)).collect(),
+            visited_nodes: None.into_iter().collect(),
+            current_node: tree.root.as_ref(),
+            stored_nodes: vec![],
         }
     }
 }
@@ -31,26 +35,29 @@ impl<'a, K, V> Iterator for ABRIterator<'a, K, V> {
     type Item = &'a BoxedNode<K, V>;
 
     fn next(&mut self) -> Option<Self::Item> {
-        loop {
-            let possible_left_subtree = if let Some(l) = self.visited_nodes.back_mut() {
-                if !l.1 {
-                    l.1 = true;
-                    l.0.children[0].as_ref()
+        if !self.stored_nodes.is_empty() {
+            self.stored_nodes.pop()
+        } else {
+            loop {
+                if let Some(current) = self.current_node {
+                    if let Some(left_child) = &current.as_ref().children[0] {
+                        self.visited_nodes.push_front(current);
+                        self.current_node = Some(&left_child);
+                        continue;
+                    } else {
+                        self.current_node = current.as_ref().children[1].as_ref();
+                        return Some(current);
+                    }
                 } else {
-                    None
+                    let new_node = self.visited_nodes.pop_front();
+                    if let Some(node) = new_node {
+                        self.current_node = node.as_ref().children[1].as_ref();
+                        return Some(node);
+                    } else {
+                        return None;
+                    }
                 }
-            } else {
-                return None;
-            };
-            if let Some(left_subtree) = possible_left_subtree {
-                self.visited_nodes.push_back((left_subtree, false));
-                continue;
             }
-
-            let (node, _) = self.visited_nodes.pop_back().unwrap();
-            self.visited_nodes
-                .extend(node.children[1].as_ref().into_iter().map(|c| (c, false)));
-            return Some(node);
         }
     }
 }
