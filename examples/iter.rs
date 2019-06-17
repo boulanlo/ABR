@@ -12,10 +12,10 @@ use rayon::ThreadPoolBuilder;
 fn main() {
     let tree: ABR<_, _> = vec![5, 7, 1, 6].into_iter().collect();
 
-    tree.to_dot("examples/debug.dot");
+    //tree.to_dot("examples/debug.dot");
 
     let results: Vec<u32> = tree
-        .par_iter()
+        .iter()
         .map(|n| n.key)
         //.with_policy(Policy::Sequential)
         .collect();

@@ -1,18 +1,26 @@
 use crate::abr::ABR;
 use crate::node::BoxedNode;
+use crate::utils::AsDebug;
 use std::collections::VecDeque;
+use std::vec::IntoIter;
+
+pub type RefNode<'a, K, V> = &'a BoxedNode<K, V>;
+pub type OptRefNode<'a, K, V> = Option<RefNode<'a, K, V>>;
 
 /// A sequential iterator for the [ABR]{struct.ABR.html} structure.
 ///
 /// This iterator goes through the tree in order, providing an ordered
 /// list of elements from the tree.
+#[derive(Debug)]
 pub struct ABRIterator<'a, K, V> {
-    pub visited_nodes: VecDeque<&'a BoxedNode<K, V>>,
-    pub current_node: Option<&'a BoxedNode<K, V>>,
-    pub stored_nodes: Vec<&'a BoxedNode<K, V>>,
+    pub small_nodes: IntoIter<RefNode<'a, K, V>>,
+    pub big_nodes: VecDeque<RefNode<'a, K, V>>,
 }
 
-impl<'a, K, V> ABRIterator<'a, K, V> {
+impl<'a, K, V> ABRIterator<'a, K, V>
+where
+    K: Ord,
+{
     /// Create a new iterator from a tree
     ///
     /// # Examples
@@ -23,40 +31,78 @@ impl<'a, K, V> ABRIterator<'a, K, V> {
     /// assert!(tree.iter().map(|n| n.key).eq(1..=7));
     /// ```
     pub fn new(tree: &'a ABR<K, V>) -> ABRIterator<'a, K, V> {
+        let mut smalls: Vec<RefNode<'a, K, V>> = Vec::new();
+        let mut bigs: VecDeque<RefNode<'a, K, V>> = VecDeque::new();
+
+        ABRIterator::descent(&mut smalls, &mut bigs, &tree.root.as_ref().unwrap());
+
         ABRIterator {
-            visited_nodes: None.into_iter().collect(),
-            current_node: tree.root.as_ref(),
-            stored_nodes: vec![],
+            small_nodes: smalls.into_iter(),
+            big_nodes: bigs,
+        }
+    }
+
+    pub fn descent(
+        smalls: &mut Vec<RefNode<'a, K, V>>,
+        bigs: &mut VecDeque<RefNode<'a, K, V>>,
+        mut start: RefNode<'a, K, V>,
+    ) {
+        eprintln!("Beginning descent...");
+        loop {
+            eprintln!(
+                "smalls: {:?}\nbigs: {:?}\nstart: {:?}",
+                smalls.as_debug(),
+                bigs.as_debug(),
+                start.as_debug()
+            );
+            if start.nb_children() == 0 {
+                eprintln!("No children\n");
+                smalls.push(start);
+                break;
+            }
+            if start.children[0].is_some() {
+                eprintln!("Left child\n");
+                bigs.push_front(start);
+                start = start.children[0].as_ref().unwrap();
+            } else {
+                eprintln!("Right child\n");
+                smalls.push(start);
+                start = start.children[1].as_ref().unwrap();
+            }
         }
     }
 }
 
-impl<'a, K, V> Iterator for ABRIterator<'a, K, V> {
+impl<'a, K, V> Iterator for ABRIterator<'a, K, V>
+where
+    K: Ord,
+{
     type Item = &'a BoxedNode<K, V>;
 
     fn next(&mut self) -> Option<Self::Item> {
-        if !self.stored_nodes.is_empty() {
-            self.stored_nodes.pop()
+        eprintln!("Call to next. My state : {:?}", self.as_debug());
+        if let Some(node) = self.small_nodes.next() {
+            eprintln!("There is {:?} in the vec", node.as_debug());
+            Some(node)
         } else {
-            loop {
-                if let Some(current) = self.current_node {
-                    if let Some(left_child) = &current.as_ref().children[0] {
-                        self.visited_nodes.push_back(current);
-                        self.current_node = Some(&left_child);
-                        continue;
-                    } else {
-                        self.current_node = current.as_ref().children[1].as_ref();
-                        return Some(current);
-                    }
-                } else {
-                    let new_node = self.visited_nodes.pop_back();
-                    if let Some(node) = new_node {
-                        self.current_node = node.as_ref().children[1].as_ref();
-                        return Some(node);
-                    } else {
-                        return None;
-                    }
+            eprintln!("Nothing in the vec anymore, trying to descend the deque...");
+            let node = self.big_nodes.pop_front();
+
+            if let Some(n) = node {
+                if n.children[1].is_some() {
+                    println!("There was {:?} in the deque, descending...", n.as_debug());
+                    let mut new_smalls = Vec::new();
+                    ABRIterator::descent(
+                        &mut new_smalls,
+                        &mut self.big_nodes,
+                        n.children[1].as_ref().unwrap(),
+                    );
+                    self.small_nodes = new_smalls.into_iter();
                 }
+                Some(n)
+            } else {
+                eprintln!("There's no more in the iterator to send.");
+                None
             }
         }
     }
