@@ -41,7 +41,7 @@ impl<'a, K, V> Iterator for ABRIterator<'a, K, V> {
             loop {
                 if let Some(current) = self.current_node {
                     if let Some(left_child) = &current.as_ref().children[0] {
-                        self.visited_nodes.push_front(current);
+                        self.visited_nodes.push_back(current);
                         self.current_node = Some(&left_child);
                         continue;
                     } else {
@@ -49,7 +49,7 @@ impl<'a, K, V> Iterator for ABRIterator<'a, K, V> {
                         return Some(current);
                     }
                 } else {
-                    let new_node = self.visited_nodes.pop_front();
+                    let new_node = self.visited_nodes.pop_back();
                     if let Some(node) = new_node {
                         self.current_node = node.as_ref().children[1].as_ref();
                         return Some(node);

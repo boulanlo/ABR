@@ -254,22 +254,9 @@ where
     ///
     /// The K type (for the key) must implement `fmt::Display` to work properly.
     pub fn to_dot(&self, name: &str) {
-        let output = File::create(name).unwrap();
-        let mut bufwriter = BufWriter::new(output);
-
-        bufwriter
-            .write(b"digraph BST {\nnode [fontname=\"Arial\"];\n")
-            .unwrap();
         if let Some(node) = &self.root {
-            node.to_dot(&mut bufwriter);
+            node.to_dot_standalone(name);
         }
-        bufwriter.write(b"\n}").unwrap();
-
-        bufwriter.flush().unwrap();
-
-        let mut result = File::create(format!("{}.png", name)).unwrap();
-        let output_dot = Command::new("dot").arg("-Tpng").arg(name).output().unwrap();
-        result.write(&output_dot.stdout).unwrap();
     }
 }
 

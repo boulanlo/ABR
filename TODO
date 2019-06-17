@@ -26,3 +26,14 @@ itérateur qui descend la longue branche
 à la fin, on a le vecteur avec des trucs à droite et à gauche, et le noeud à deux enfants dans l'arbre
 on met l'enfant gauche de cet enfant + les trucs à gauche dans la division de gauche, et le noeud et
 les trucs à droite dans la division de droite.
+
+------
+
+marque todo dans par :
+si new_vec est vide:
+ on continue ce qu'on faisait avant
+sinon :
+ à gauche on garde le self.stored, noeud courant = center, visited = []
+ à droite : stored = new_vec, noeud courant = [], visited = []
+
+------

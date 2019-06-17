@@ -2,6 +2,7 @@ use std::cmp::{Ord, Ordering};
 use std::fmt::Display;
 use std::fs::File;
 use std::io::{BufWriter, Write};
+use std::process::Command;
 
 pub type BoxedNode<K, V> = Box<Node<K, V>>;
 pub type OptBoxedNode<K, V> = Option<BoxedNode<K, V>>;
@@ -133,7 +134,7 @@ where
         buf.write_fmt(format_args!("{} [label=\"{}\"];\n", &self.key, &self.key))
             .unwrap();
 
-        &self.children.iter().for_each(|node| {
+        self.children.iter().for_each(|node| {
             if let Some(child) = node {
                 child.to_dot(buf);
             }
@@ -141,12 +142,31 @@ where
 
         if !self.is_leaf() {
             buf.write_fmt(format_args!("{} -> {{ ", &self.key)).unwrap();
-            &self.children.iter().for_each(|node| {
+            self.children.iter().for_each(|node| {
                 if let Some(child) = node {
                     buf.write_fmt(format_args!("{} ", &child.key)).unwrap();
                 }
             });
             buf.write_fmt(format_args!("}};\n")).unwrap();
         }
+    }
+
+    pub fn to_dot_standalone(&self, name: &str) {
+        let output = File::create(name).unwrap();
+        let mut bufwriter = BufWriter::new(output);
+
+        bufwriter
+            .write_all(b"digraph BST {\nnode [fontname=\"Arial\"];\n")
+            .unwrap();
+
+        self.to_dot(&mut bufwriter);
+
+        bufwriter.write_all(b"\n}").unwrap();
+
+        bufwriter.flush().unwrap();
+
+        let mut result = File::create(format!("{}.png", name)).unwrap();
+        let output_dot = Command::new("dot").arg("-Tpng").arg(name).output().unwrap();
+        result.write_all(&output_dot.stdout).unwrap();
     }
 }
