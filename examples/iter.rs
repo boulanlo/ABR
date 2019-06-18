@@ -1,6 +1,4 @@
 use abr::abr::ABR;
-use rayon_adaptive::prelude::*;
-use rayon_adaptive::Policy;
 use std::iter::repeat_with;
 use std::num::Wrapping;
 use time::precise_time_ns;
@@ -10,20 +8,6 @@ extern crate rayon_logs as rayon;
 use rayon::ThreadPoolBuilder;
 
 fn main() {
-    /*
-    let tree: ABR<_, _> = vec![5, 7, 1, 6, 4, 2, 3, 8, 10, 9].into_iter().collect();
-
-    //tree.to_dot("examples/debug.dot");
-
-    let results: Vec<u32> = tree
-        .iter()
-        .map(|n| n.key)
-        //.with_policy(Policy::Sequential)
-        .collect();
-    //let results: u32 = tree.par_iter().to_sequential().map(|n| n.key).sum();
-    println!("{:?}", results);
-     */
-
     let input: Vec<u64> = repeat_with(rand::random).take(1_000_000).collect();
     let tree: ABR<_, _> = input.iter().collect();
     //tree.to_dot("examples/debug.dot");

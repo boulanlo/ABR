@@ -12,6 +12,7 @@ logs = ["rayon_logs"]
 # rayon_adaptive = {git="https://github.com/wagnerf42/rayon-adaptive", branch="new_api"}
 # rayon_adaptive = {path="../rayon-adaptive"}
 rayon_logs = {optional=true, git="https://github.com/wagnerf42/rayon-logs"} 
+criterion = "*"
 time = "*"
 rand = "*"
 rayon= "*"
@@ -21,3 +22,7 @@ itertools= "*"
 rayon_adaptive={git="https://github.com/wagnerf42/rayon-adaptive", branch="new_api", default-features = false, features = ["logs"]}
 [target.'cfg(not(feature = "logs"))'.dependencies]
 rayon_adaptive={git="https://github.com/wagnerf42/rayon-adaptive", branch="new_api"}
+
+[[bench]]
+name = "bench_par_sum"
+harness = false

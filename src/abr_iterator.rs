@@ -1,6 +1,5 @@
 use crate::abr::ABR;
 use crate::node::BoxedNode;
-use crate::utils::AsDebug;
 use std::collections::VecDeque;
 use std::vec::IntoIter;
 
@@ -47,25 +46,15 @@ where
         bigs: &mut VecDeque<RefNode<'a, K, V>>,
         mut start: RefNode<'a, K, V>,
     ) {
-        dbgp!("Beginning descent...");
         loop {
-            dbgp!(
-                "smalls: {:?}\nbigs: {:?}\nstart: {:?}",
-                smalls.as_debug(),
-                bigs.as_debug(),
-                start.as_debug()
-            );
             if start.nb_children() == 0 {
-                dbgp!("No children\n");
                 smalls.push(start);
                 break;
             }
             if start.children[0].is_some() {
-                dbgp!("Left child\n");
                 bigs.push_front(start);
                 start = start.children[0].as_ref().unwrap();
             } else {
-                dbgp!("Right child\n");
                 smalls.push(start);
                 start = start.children[1].as_ref().unwrap();
             }
@@ -81,17 +70,13 @@ where
 
     // TODO : simplifier avec Option::or_else
     fn next(&mut self) -> Option<Self::Item> {
-        dbgp!("Call to next. My state : {:?}", self.as_debug());
         if let Some(node) = self.small_nodes.next() {
-            dbgp!("There is {:?} in the vec", node.as_debug());
             Some(node)
         } else {
-            dbgp!("Nothing in the vec anymore, trying to descend the deque...");
             let node = self.big_nodes.pop_front();
 
             if let Some(n) = node {
                 if n.children[1].is_some() {
-                    dbgp!("There was {:?} in the deque, descending...", n.as_debug());
                     let mut new_smalls = Vec::new();
                     ABRIterator::descent(
                         &mut new_smalls,
@@ -102,7 +87,6 @@ where
                 }
                 Some(n)
             } else {
-                dbgp!("There's no more in the iterator to send.");
                 None
             }
         }
