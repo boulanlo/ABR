@@ -1,0 +1,201 @@
+<?xml version="1.0"?>
+<svg viewBox="0 0 1920 1080" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<line x1="1687.380488021788" y1="322.10526315789474" x2="1658.0173379521445" y2="341.0526315789474" stroke="black" stroke-width="2.0"/><line x1="1687.380488021788" y1="322.10526315789474" x2="1703.1636487914204" y2="341.0526315789474" stroke="black" stroke-width="2.0"/><line x1="1658.0173379521445" y1="435.7894736842105" x2="1687.380488021788" y2="454.7368421052632" stroke="black" stroke-width="2.0"/><line x1="1703.1636487914204" y1="435.7894736842105" x2="1687.380488021788" y2="454.7368421052632" stroke="black" stroke-width="2.0"/><line x1="1826.263399430532" y1="322.10526315789474" x2="1782.9629190196883" y2="341.0526315789474" stroke="black" stroke-width="2.0"/><line x1="1826.263399430532" y1="322.10526315789474" x2="1876.6995195891564" y2="341.0526315789474" stroke="black" stroke-width="2.0"/><line x1="1782.9629190196883" y1="435.7894736842105" x2="1826.263399430532" y2="454.7368421052632" stroke="black" stroke-width="2.0"/><line x1="1876.6995195891564" y1="435.7894736842105" x2="1826.263399430532" y2="454.7368421052632" stroke="black" stroke-width="2.0"/><line x1="1781.117088591256" y1="208.42105263157896" x2="1687.380488021788" y2="227.3684210526316" stroke="black" stroke-width="2.0"/><line x1="1781.117088591256" y1="208.42105263157896" x2="1826.263399430532" y2="227.3684210526316" stroke="black" stroke-width="2.0"/><line x1="1687.380488021788" y1="549.4736842105264" x2="1781.117088591256" y2="568.421052631579" stroke="black" stroke-width="2.0"/><line x1="1826.263399430532" y1="549.4736842105264" x2="1781.117088591256" y2="568.421052631579" stroke="black" stroke-width="2.0"/><line x1="960" y1="94.73684210526315" x2="821.1170885912561" y2="341.0526315789474" stroke="black" stroke-width="2.0"/><line x1="960" y1="94.73684210526315" x2="1781.117088591256" y2="113.68421052631578" stroke="black" stroke-width="2.0"/><line x1="821.1170885912561" y1="435.7894736842105" x2="960" y2="682.1052631578948" stroke="black" stroke-width="2.0"/><line x1="1781.117088591256" y1="663.1578947368421" x2="960" y2="682.1052631578948" stroke="black" stroke-width="2.0"/><rect x="959.8200115725097" y="0" width="0.3599768549805718" height="94.73684210526315" fill="black"/>
+<rect class="task5797432161032308961" x="959.8200115725097" y="0" width="0" height="94.73684210526315" fill="rgba(255,0,0,1)">
+<animate attributeType="XML" attributeName="width" from="0" to="0.3599768549805718" begin="0s" dur="0.013148751922567089s" fill="freeze"/>
+</rect>
+<rect x="0" y="341.0526315789474" width="1642.2341771825122" height="94.73684210526315" fill="black"/>
+<rect class="task5797432161032308961" x="0" y="341.0526315789474" width="0" height="94.73684210526315" fill="rgba(255,0,0,1)">
+<animate attributeType="XML" attributeName="width" from="0" to="1642.2341771825122" begin="0.01356136966072296s" dur="59.985328211446664s" fill="freeze"/>
+</rect>
+<rect x="1781.063734494592" y="113.68421052631578" width="0.10670819332807233" height="94.73684210526315" fill="black"/>
+<rect class="task5797432161032308961" x="1781.063734494592" y="113.68421052631578" width="0" height="94.73684210526315" fill="rgba(0,255,0,1)">
+<animate attributeType="XML" attributeName="width" from="0" to="0.10670819332807233" begin="0.013943672626279624s" dur="0.0038976938177091324s" fill="freeze"/>
+</rect>
+<rect x="1687.3778137850547" y="227.3684210526316" width="0.0053484734665374" height="94.73684210526315" fill="black"/>
+<rect class="task5797432161032308961" x="1687.3778137850547" y="227.3684210526316" width="0" height="94.73684210526315" fill="rgba(0,255,0,1)">
+<animate attributeType="XML" attributeName="width" from="0" to="0.0053484734665374" begin="0.01808893708688228s" dur="0.00019536186786155523s" fill="freeze"/>
+</rect>
+<rect x="1642.2341771825122" y="341.0526315789474" width="31.566321539264663" height="94.73684210526315" fill="black"/>
+<rect class="task5797432161032308961" x="1642.2341771825122" y="341.0526315789474" width="0" height="94.73684210526315" fill="rgba(0,255,0,1)">
+<animate attributeType="XML" attributeName="width" from="0" to="31.566321539264663" begin="0.018344367115264486s" dur="1.1530122708866326s" fill="freeze"/>
+</rect>
+<rect x="1673.8004987217769" y="341.0526315789474" width="58.72630013928716" height="94.73684210526315" fill="black"/>
+<rect class="task5797432161032308961" x="1673.8004987217769" y="341.0526315789474" width="0" height="94.73684210526315" fill="rgba(0,255,0,1)">
+<animate attributeType="XML" attributeName="width" from="0" to="58.72630013928716" begin="1.1717557825077867s" dur="2.145075554658588s" fill="freeze"/>
+</rect>
+<rect x="1687.376499720453" y="454.7368421052632" width="0.007976602669922157" height="94.73684210526315" fill="black"/>
+<rect class="task5797432161032308961" x="1687.376499720453" y="454.7368421052632" width="0" height="94.73684210526315" fill="rgba(0,255,0,1)">
+<animate attributeType="XML" attributeName="width" from="0" to="0.007976602669922157" begin="3.317073855347168s" dur="0.0002913586477590436s" fill="freeze"/>
+</rect>
+<rect x="1826.2451715870511" y="227.3684210526316" width="0.03645568696157101" height="94.73684210526315" fill="black"/>
+<rect class="task5797432161032308961" x="1826.2451715870511" y="227.3684210526316" width="0" height="94.73684210526315" fill="rgba(0,255,0,1)">
+<animate attributeType="XML" attributeName="width" from="0" to="0.03645568696157101" begin="3.317815444506493s" dur="0.001331604455654049s" fill="freeze"/>
+</rect>
+<rect x="1732.526798861064" y="341.0526315789474" width="100.87224031724863" height="94.73684210526315" fill="black"/>
+<rect class="task5797432161032308961" x="1732.526798861064" y="341.0526315789474" width="0" height="94.73684210526315" fill="rgba(0,255,0,1)">
+<animate attributeType="XML" attributeName="width" from="0" to="100.87224031724863" begin="3.3193749711413187s" dur="3.6845259506382875s" fill="freeze"/>
+</rect>
+<rect x="1833.3990391783125" y="341.0526315789474" width="86.60096082168741" height="94.73684210526315" fill="black"/>
+<rect class="task5797432161032308961" x="1833.3990391783125" y="341.0526315789474" width="0" height="94.73684210526315" fill="rgba(0,255,0,1)">
+<animate attributeType="XML" attributeName="width" from="0" to="86.60096082168741" begin="7.004244489202398s" dur="3.163243787331204s" fill="freeze"/>
+</rect>
+<rect x="1826.2618164053392" y="454.7368421052632" width="0.003166050385364093" height="94.73684210526315" fill="black"/>
+<rect class="task5797432161032308961" x="1826.2618164053392" y="454.7368421052632" width="0" height="94.73684210526315" fill="rgba(0,255,0,1)">
+<animate attributeType="XML" attributeName="width" from="0" to="0.003166050385364093" begin="10.167583150544143s" dur="0.0001156452436191965s" fill="freeze"/>
+</rect>
+<rect x="1781.1138687487526" y="568.421052631579" width="0.006439685007124054" height="94.73684210526315" fill="black"/>
+<rect class="task5797432161032308961" x="1781.1138687487526" y="568.421052631579" width="0" height="94.73684210526315" fill="rgba(0,255,0,1)">
+<animate attributeType="XML" attributeName="width" from="0" to="0.006439685007124054" begin="10.167753250101505s" dur="0.00023522017998273462s" fill="freeze"/>
+</rect>
+<rect x="959.9910474546142" y="682.1052631578948" width="0.017905090771597906" height="94.73684210526315" fill="black"/>
+<rect class="task5797432161032308961" x="959.9910474546142" y="682.1052631578948" width="0" height="94.73684210526315" fill="rgba(255,0,0,1)">
+<animate attributeType="XML" attributeName="width" from="0" to="0.017905090771597906" begin="59.99934598685041s" dur="0.0006540131495939996s" fill="freeze"/>
+</rect>
+<rect x="192" y="871.578947368421" width="0.01129634482156606" height="94.73684210526315" fill="black"/>
+<rect class="task5797432161032308961" x="192" y="871.578947368421" width="0" height="94.73684210526315" fill="rgba(255,0,0,1)">
+<animate attributeType="XML" attributeName="width" from="0" to="0.01129634482156606" begin="0.013148751922567089s" dur="0.000412617738155871s" fill="freeze"/>
+</rect>
+<rect x="192" y="985.2631578947368" width="0.38173960908579296" height="94.73684210526315" fill="black"/>
+<rect class="task5797432161032308961" x="192" y="985.2631578947368" width="0" height="94.73684210526315" fill="rgba(0,255,0,1)">
+<animate attributeType="XML" attributeName="width" from="0" to="0.38173960908579296" begin="0s" dur="0.013943672626279624s" fill="freeze"/>
+</rect>
+<rect x="192.3817396090858" y="985.2631578947368" width="0.006777806892939636" height="94.73684210526315" fill="black"/>
+<rect class="task5797432161032308961" x="192.3817396090858" y="985.2631578947368" width="0" height="94.73684210526315" fill="rgba(0,255,0,1)">
+<animate attributeType="XML" attributeName="width" from="0" to="0.006777806892939636" begin="0.017841366443988756s" dur="0.0002475706428935226s" fill="freeze"/>
+</rect>
+<rect x="192.38851741597873" y="985.2631578947368" width="0.0016445018991939706" height="94.73684210526315" fill="black"/>
+<rect class="task5797432161032308961" x="192.38851741597873" y="985.2631578947368" width="0" height="94.73684210526315" fill="rgba(0,255,0,1)">
+<animate attributeType="XML" attributeName="width" from="0" to="0.0016445018991939706" begin="0.018284298954743834s" dur="0.000060068160520650606s" fill="freeze"/>
+</rect>
+<rect x="192.39016191787792" y="985.2631578947368" width="0.010927484582494516" height="94.73684210526315" fill="black"/>
+<rect class="task5797432161032308961" x="192.39016191787792" y="985.2631578947368" width="0" height="94.73684210526315" fill="rgba(0,255,0,1)">
+<animate attributeType="XML" attributeName="width" from="0" to="0.010927484582494516" begin="1.1713566380018972s" dur="0.00039914450588955685s" fill="freeze"/>
+</rect>
+<rect x="192.40108940246043" y="985.2631578947368" width="0.006639484303287807" height="94.73684210526315" fill="black"/>
+<rect class="task5797432161032308961" x="192.40108940246043" y="985.2631578947368" width="0" height="94.73684210526315" fill="rgba(0,255,0,1)">
+<animate attributeType="XML" attributeName="width" from="0" to="0.006639484303287807" begin="3.3168313371663745s" dur="0.00024251818079365478s" fill="freeze"/>
+</rect>
+<rect x="192.4077288867637" y="985.2631578947368" width="0.01232607965564079" height="94.73684210526315" fill="black"/>
+<rect class="task5797432161032308961" x="192.4077288867637" y="985.2631578947368" width="0" height="94.73684210526315" fill="rgba(0,255,0,1)">
+<animate attributeType="XML" attributeName="width" from="0" to="0.01232607965564079" begin="3.3173652139949272s" dur="0.000450230511565998s" fill="freeze"/>
+</rect>
+<rect x="192.42005496641934" y="985.2631578947368" width="0.0062398857109603" height="94.73684210526315" fill="black"/>
+<rect class="task5797432161032308961" x="192.42005496641934" y="985.2631578947368" width="0" height="94.73684210526315" fill="rgba(0,255,0,1)">
+<animate attributeType="XML" attributeName="width" from="0" to="0.0062398857109603" begin="3.3191470489621473s" dur="0.00022792217917181446s" fill="freeze"/>
+</rect>
+<rect x="192.4262948521303" y="985.2631578947368" width="0.009405936096324393" height="94.73684210526315" fill="black"/>
+<rect class="task5797432161032308961" x="192.4262948521303" y="985.2631578947368" width="0" height="94.73684210526315" fill="rgba(0,255,0,1)">
+<animate attributeType="XML" attributeName="width" from="0" to="0.009405936096324393" begin="7.003900921779606s" dur="0.00034356742279101094s" fill="freeze"/>
+</rect>
+<rect x="192.43570078822663" y="985.2631578947368" width="0.002597390850128795" height="94.73684210526315" fill="black"/>
+<rect class="task5797432161032308961" x="192.43570078822663" y="985.2631578947368" width="0" height="94.73684210526315" fill="rgba(0,255,0,1)">
+<animate attributeType="XML" attributeName="width" from="0" to="0.002597390850128795" begin="10.167488276533602s" dur="0.00009487401054196217s" fill="freeze"/>
+</rect>
+<rect x="192.43829817907675" y="985.2631578947368" width="0.0014908101329141603" height="94.73684210526315" fill="black"/>
+<rect class="task5797432161032308961" x="192.43829817907675" y="985.2631578947368" width="0" height="94.73684210526315" fill="rgba(0,255,0,1)">
+<animate attributeType="XML" attributeName="width" from="0" to="0.0014908101329141603" begin="10.167698795787762s" dur="0.00005445431374301971s" fill="freeze"/>
+</rect>
+<rect x="192.01129634482157" y="871.578947368421" width="0.01249514059854858" height="94.73684210526315" fill="black"/>
+<rect class="task5797432161032308961" x="192.01129634482157" y="871.578947368421" width="0" height="94.73684210526315" fill="rgba(255,0,0,1)">
+<animate attributeType="XML" attributeName="width" from="0" to="0.01249514059854858" begin="59.998889581107385s" dur="0.000456405743021392s" fill="freeze"/>
+</rect>
+<rect x="192.43978898920966" y="985.2631578947368" width="1364.2641441151682" height="94.73684210526315" fill="black"/>
+<rect class="task5797432161032308961" x="192.43978898920966" y="985.2631578947368" width="0" height="94.73684210526315" fill="rgba(0,255,0,1)">
+<animate attributeType="XML" attributeName="width" from="0" to="1364.2641441151682" begin="10.167988470281488s" dur="49.832011529718514s" fill="freeze"/>
+</rect>
+<g id="tip_5797432161032308961_0">
+<rect x="959.8200115725097" y="40" width="300" height="50" fill="white" stroke="black"/>
+<text x="964.8200115725097" y="60">task: 0, thread: 0,</text>
+<text x="964.8200115725097" y="80"> duration: 0.023422 (ms)</text>
+</g>
+<g id="tip_5797432161032308961_1">
+<rect x="0" y="381.0526315789474" width="300" height="50" fill="white" stroke="black"/>
+<text x="5" y="401.0526315789474">task: 2, thread: 0,</text>
+<text x="5" y="421.0526315789474"> duration: 106.85245 (ms)</text>
+</g>
+<g id="tip_5797432161032308961_2">
+<rect x="1781.063734494592" y="153.68421052631578" width="300" height="50" fill="white" stroke="black"/>
+<text x="1786.063734494592" y="173.68421052631578">task: 3, thread: 1,</text>
+<text x="1786.063734494592" y="193.68421052631578"> duration: 0.006943 (ms)</text>
+</g>
+<g id="tip_5797432161032308961_3">
+<rect x="1687.3778137850547" y="267.36842105263156" width="300" height="50" fill="white" stroke="black"/>
+<text x="1692.3778137850547" y="287.36842105263156">task: 5, thread: 1,</text>
+<text x="1692.3778137850547" y="307.36842105263156"> duration: 0.000348 (ms)</text>
+</g>
+<g id="tip_5797432161032308961_4">
+<rect x="1642.2341771825122" y="381.0526315789474" width="300" height="50" fill="white" stroke="black"/>
+<text x="1647.2341771825122" y="401.0526315789474">task: 8, thread: 1,</text>
+<text x="1647.2341771825122" y="421.0526315789474"> duration: 2.053872 (ms)</text>
+</g>
+<g id="tip_5797432161032308961_5">
+<rect x="1673.8004987217769" y="381.0526315789474" width="300" height="50" fill="white" stroke="black"/>
+<text x="1678.8004987217769" y="401.0526315789474">task: 9, thread: 1,</text>
+<text x="1678.8004987217769" y="421.0526315789474"> duration: 3.821044 (ms)</text>
+</g>
+<g id="tip_5797432161032308961_6">
+<rect x="1687.376499720453" y="494.7368421052632" width="300" height="50" fill="white" stroke="black"/>
+<text x="1692.376499720453" y="514.7368421052631">task: 7, thread: 1,</text>
+<text x="1692.376499720453" y="534.7368421052631"> duration: 0.000519 (ms)</text>
+</g>
+<g id="tip_5797432161032308961_7">
+<rect x="1826.2451715870511" y="267.36842105263156" width="300" height="50" fill="white" stroke="black"/>
+<text x="1831.2451715870511" y="287.36842105263156">task: 6, thread: 1,</text>
+<text x="1831.2451715870511" y="307.36842105263156"> duration: 0.002372 (ms)</text>
+</g>
+<g id="tip_5797432161032308961_8">
+<rect x="1732.526798861064" y="381.0526315789474" width="300" height="50" fill="white" stroke="black"/>
+<text x="1737.526798861064" y="401.0526315789474">task: 11, thread: 1,</text>
+<text x="1737.526798861064" y="421.0526315789474"> duration: 6.563282 (ms)</text>
+</g>
+<g id="tip_5797432161032308961_9">
+<rect x="1833.3990391783125" y="381.0526315789474" width="300" height="50" fill="white" stroke="black"/>
+<text x="1838.3990391783125" y="401.0526315789474">task: 12, thread: 1,</text>
+<text x="1838.3990391783125" y="421.0526315789474"> duration: 5.634717 (ms)</text>
+</g>
+<g id="tip_5797432161032308961_10">
+<rect x="1826.2618164053392" y="494.7368421052632" width="300" height="50" fill="white" stroke="black"/>
+<text x="1831.2618164053392" y="514.7368421052631">task: 10, thread: 1,</text>
+<text x="1831.2618164053392" y="534.7368421052631"> duration: 0.000206 (ms)</text>
+</g>
+<g id="tip_5797432161032308961_11">
+<rect x="1781.1138687487526" y="448.42105263157896" width="300" height="50" fill="white" stroke="black"/>
+<text x="1786.1138687487526" y="468.42105263157896">task: 4, thread: 1,</text>
+<text x="1786.1138687487526" y="488.42105263157896"> duration: 0.000419 (ms)</text>
+</g>
+<g id="tip_5797432161032308961_12">
+<rect x="959.9910474546142" y="562.1052631578948" width="300" height="50" fill="white" stroke="black"/>
+<text x="964.9910474546142" y="582.1052631578948">task: 1, thread: 0,</text>
+<text x="964.9910474546142" y="602.1052631578948"> duration: 0.001165 (ms)</text>
+</g>
+
+   <style>
+      .task-highlight {
+        fill: #ec008c;
+        opacity: 1;
+      }
+    </style>
+  <script><![CDATA[
+
+    var tasks = document.getElementsByClassName('task5797432161032308961');
+
+    for (var i = 0; i < tasks.length; i++) {
+      var tip = document.getElementById('tip_5797432161032308961_'+i);
+      tip.style.display='none';
+      tasks[i].tip = tip;
+      tasks[i].addEventListener('mouseover', mouseOverEffect);
+      tasks[i].addEventListener('mouseout', mouseOutEffect);
+    }
+
+    function mouseOverEffect() {
+      this.classList.add("task-highlight");
+      this.tip.style.display='block';
+    }
+
+    function mouseOutEffect() {
+      this.classList.remove("task-highlight");
+      this.tip.style.display='none';
+    }
+  ]]></script>
+</svg>

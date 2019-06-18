@@ -47,25 +47,25 @@ where
         bigs: &mut VecDeque<RefNode<'a, K, V>>,
         mut start: RefNode<'a, K, V>,
     ) {
-        eprintln!("Beginning descent...");
+        dbgp!("Beginning descent...");
         loop {
-            eprintln!(
+            dbgp!(
                 "smalls: {:?}\nbigs: {:?}\nstart: {:?}",
                 smalls.as_debug(),
                 bigs.as_debug(),
                 start.as_debug()
             );
             if start.nb_children() == 0 {
-                eprintln!("No children\n");
+                dbgp!("No children\n");
                 smalls.push(start);
                 break;
             }
             if start.children[0].is_some() {
-                eprintln!("Left child\n");
+                dbgp!("Left child\n");
                 bigs.push_front(start);
                 start = start.children[0].as_ref().unwrap();
             } else {
-                eprintln!("Right child\n");
+                dbgp!("Right child\n");
                 smalls.push(start);
                 start = start.children[1].as_ref().unwrap();
             }
@@ -79,18 +79,19 @@ where
 {
     type Item = &'a BoxedNode<K, V>;
 
+    // TODO : simplifier avec Option::or_else
     fn next(&mut self) -> Option<Self::Item> {
-        eprintln!("Call to next. My state : {:?}", self.as_debug());
+        dbgp!("Call to next. My state : {:?}", self.as_debug());
         if let Some(node) = self.small_nodes.next() {
-            eprintln!("There is {:?} in the vec", node.as_debug());
+            dbgp!("There is {:?} in the vec", node.as_debug());
             Some(node)
         } else {
-            eprintln!("Nothing in the vec anymore, trying to descend the deque...");
+            dbgp!("Nothing in the vec anymore, trying to descend the deque...");
             let node = self.big_nodes.pop_front();
 
             if let Some(n) = node {
                 if n.children[1].is_some() {
-                    println!("There was {:?} in the deque, descending...", n.as_debug());
+                    dbgp!("There was {:?} in the deque, descending...", n.as_debug());
                     let mut new_smalls = Vec::new();
                     ABRIterator::descent(
                         &mut new_smalls,
@@ -101,7 +102,7 @@ where
                 }
                 Some(n)
             } else {
-                eprintln!("There's no more in the iterator to send.");
+                dbgp!("There's no more in the iterator to send.");
                 None
             }
         }

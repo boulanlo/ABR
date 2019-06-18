@@ -10,7 +10,8 @@ extern crate rayon_logs as rayon;
 use rayon::ThreadPoolBuilder;
 
 fn main() {
-    let tree: ABR<_, _> = vec![5, 7, 1, 6].into_iter().collect();
+    /*
+    let tree: ABR<_, _> = vec![5, 7, 1, 6, 4, 2, 3, 8, 10, 9].into_iter().collect();
 
     //tree.to_dot("examples/debug.dot");
 
@@ -21,32 +22,36 @@ fn main() {
         .collect();
     //let results: u32 = tree.par_iter().to_sequential().map(|n| n.key).sum();
     println!("{:?}", results);
+     */
 
-    /*
-    let input: Vec<u64> = repeat_with(rand::random).take(100).collect();
+    let input: Vec<u64> = repeat_with(rand::random).take(1_000_000).collect();
     let tree: ABR<_, _> = input.iter().collect();
     //tree.to_dot("examples/debug.dot");
 
     let start = precise_time_ns();
-    let sorted_input: Vec<_> = tree.iter().map(|n| n.key.clone()).collect();
+    let sum_iter: Wrapping<u64> = tree
+        .iter()
+        .map(|n| Wrapping(*n.key))
+        .fold(Wrapping(0), |acc, x| acc + x);
+
     let end = precise_time_ns();
-    println!("sequential took {} ns", end - start);
-    assert!(sorted_input.windows(2).all(|w| w[0] < w[1]));
+    println!("seq: {} ns", end - start);
+    //assert!(sorted_input.windows(2).all(|w| w[0] < w[1]));
 
     let pool = ThreadPoolBuilder::new()
         .build()
         .expect("pool creation failed");
 
     let start = precise_time_ns();
-    let s: Wrapping<u64> = pool.install(|| {
+    let sum_par: Wrapping<u64> = pool.install(|| {
         tree.par_iter()
             .map(|n| Wrapping(*n.key))
             .reduce(|| Wrapping(0), |a, b| a + b)
     });
-    assert!(s.0 > 0);
-    //let sorted_input:Vec<u64> = pool.install(|| (0..10_000_000u64).into_par_iter().collect());
+
     let end = precise_time_ns();
-    println!("parallel took {} ns", end - start);
-    assert!(sorted_input.windows(2).all(|w| w[0] < w[1]));
-     */
+    assert!(sum_iter.0 == sum_par.0);
+
+    println!("par: {} ns", end - start);
+    //assert!(sorted_input.windows(2).all(|w| w[0] < w[1]));
 }

@@ -405,7 +405,7 @@ dependencies = [
 [[package]]
 name = "rayon_adaptive"
 version = "0.1.0"
-source = "git+https://github.com/wagnerf42/rayon-adaptive?branch=new_api#ab3e134b464eaecf30510aaf9ad4b5a3520b11d5"
+source = "git+https://github.com/wagnerf42/rayon-adaptive?branch=new_api#50b1a3ef7c21852945207a52f5f91bacee77cb8f"
 dependencies = [
  "crossbeam 0.7.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "derive-divisible 0.1.0 (git+https://github.com/wagnerf42/derive-divisible?branch=new_api)",

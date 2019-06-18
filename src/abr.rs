@@ -1,5 +1,5 @@
 use crate::abr_iterator::ABRIterator;
-//use crate::abr_parallel_iterator::ABRParallelIterator;
+use crate::abr_parallel_iterator::ABRParallelIterator;
 use crate::node::Node;
 use crate::node::OptBoxedNode;
 use std::fmt::Display;
@@ -230,13 +230,18 @@ where
         ABRIterator::new(self)
     }
 
-    /*
     /// Get a parallel iterator (using rayon_adaptive) from the tree,
     /// allowing parallel operations like sum or fold.
+    /// ```
+    /// use abr::abr::ABR;
+    /// use rayon_adaptive::prelude::*;
+    ///
+    /// let tree: ABR<_, _> = vec![5, 3, 7, 1, 4, 2, 6].into_iter().collect();
+    /// assert_eq!(tree.par_iter().map(|n| n.key).reduce(|| 0, |a, b| a + b), 28);
+    /// ```
     pub fn par_iter<'a>(&'a self) -> ABRParallelIterator<'a, K, V> {
         ABRParallelIterator::new(self)
     }
-     */
 }
 
 impl<K, V> ABR<K, V>

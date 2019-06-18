@@ -21,3 +21,11 @@ impl<T: Debug> AsDebug for T {
         self
     }
 }
+
+macro_rules! dbgp {
+    ($($arg:tt)*) => {
+        if cfg!(debug_assertions) {
+            eprintln!($($arg)*);
+        }
+    };
+}
