@@ -17,11 +17,11 @@ time = "*"
 rand = "*"
 rayon= "*"
 itertools= "*"
-#rayon_adaptive = {path="../rayon-adaptive", features=["logs"]}
-[target.'cfg(feature = "logs")'.dependencies]
-rayon_adaptive={git="https://github.com/wagnerf42/rayon-adaptive", branch="new_api", default-features = false, features = ["logs"]}
-[target.'cfg(not(feature = "logs"))'.dependencies]
-rayon_adaptive={git="https://github.com/wagnerf42/rayon-adaptive", branch="new_api"}
+rayon_adaptive = {path="../rayon-adaptive", features=["logs"]}
+# [target.'cfg(feature = "logs")'.dependencies]
+# rayon_adaptive={git="https://github.com/wagnerf42/rayon-adaptive", branch="new_api", default-features = false, features = ["logs"]}
+# [target.'cfg(not(feature = "logs"))'.dependencies]
+# rayon_adaptive={git="https://github.com/wagnerf42/rayon-adaptive", branch="new_api"}
 
 [[bench]]
 name = "bench_par_sum"
