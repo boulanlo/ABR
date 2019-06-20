@@ -3,3 +3,4 @@
 *.dot
 *.dot.png
 .#*
+bench_results

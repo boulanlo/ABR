@@ -10,28 +10,28 @@ use rayon::ThreadPoolBuilder;
 extern crate rayon_adaptive;
 use rayon_adaptive::prelude::*;
 
-fn perfect_tree(level: usize, acc: &mut Vec<u64>, last: u64) {
-    if level != 0 {
-        let current_power = 2u64.pow(level as u32 - 1);
-        let (small, big) = (last - current_power, last + current_power);
-        acc.push(small);
-        acc.push(big);
+fn perfect_tree_data(size: usize) -> Vec<u64> {
+    fn perfect_tree_inner(level: usize, acc: &mut Vec<u64>, last: u64) {
+        if level != 0 {
+            let current_power = 2u64.pow(level as u32 - 1);
+            let (small, big) = (last - current_power, last + current_power);
+            acc.push(small);
+            acc.push(big);
 
-        perfect_tree(level - 1, acc, small);
-        perfect_tree(level - 1, acc, big);
+            perfect_tree_inner(level - 1, acc, small);
+            perfect_tree_inner(level - 1, acc, big);
+        }
     }
-}
 
-fn create_perfect_tree_data(size: usize) -> Vec<u64> {
     let power = 2u64.pow(size as u32);
     let mut v: Vec<u64> = vec![power];
-    perfect_tree(size as usize, &mut v, power);
+    perfect_tree_inner(size as usize, &mut v, power);
     v
 }
 
 fn main() {
     //let input: Vec<u64> = repeat_with(rand::random).take(1_000_000).collect();
-    let input: Vec<u64> = create_perfect_tree_data(24);
+    let input: Vec<u64> = perfect_tree_data(24);
     let tree: ABR<_, _> = input.iter().collect();
     //tree.to_dot("examples/debug.dot");
 
