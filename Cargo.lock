@@ -531,7 +531,7 @@ dependencies = [
 [[package]]
 name = "rayon_logs"
 version = "0.1.2"
-source = "git+https://github.com/wagnerf42/rayon-logs#1b0c6e97472147d0395ba5cd299567df9743512c"
+source = "git+https://github.com/wagnerf42/rayon-logs#82867b743ca99f3b7de6678a179684d5bf47b9f3"
 dependencies = [
  "itertools 0.8.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "libc 0.2.58 (registry+https://github.com/rust-lang/crates.io-index)",

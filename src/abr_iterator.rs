@@ -68,11 +68,8 @@ where
 {
     type Item = &'a BoxedNode<K, V>;
 
-    // TODO : simplifier avec Option::or_else
     fn next(&mut self) -> Option<Self::Item> {
-        if let Some(node) = self.small_nodes.next() {
-            Some(node)
-        } else {
+        self.small_nodes.next().or_else(|| {
             let node = self.big_nodes.pop_front();
 
             if let Some(n) = node {
@@ -89,6 +86,6 @@ where
             } else {
                 None
             }
-        }
+        })
     }
 }
