@@ -52,7 +52,7 @@ where
         )
     }
 
-    fn divide_at(mut self, index: usize) -> (Self, Self) {
+    fn divide_at(mut self, _index: usize) -> (Self, Self) {
         let given_node = match self.big_nodes.len() {
             0 => {
                 panic!("Deque should not be empty");
