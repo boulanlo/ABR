@@ -39,7 +39,7 @@ fn sum_par(tree: ABR<u64, ()>, level: Option<usize>) -> ABR<u64, ()> {
 }
 
 fn main() -> Result<(), Error> {
-    let sizes: Vec<usize> = vec![1000, 10_000, 20_000, 30_000];
+    let sizes: Vec<usize> = vec![500_000];
     let levels: Vec<Option<usize>> = (0usize..20)
         .map(|x| if x == 0 { None } else { Some(x) })
         .collect();

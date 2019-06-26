@@ -54,9 +54,7 @@ where
 
     fn divide_at(mut self, _index: usize) -> (Self, Self) {
         let given_node = match self.big_nodes.len() {
-            0 => {
-                panic!("Deque should not be empty");
-            }
+            0 => None,
             1 => {
                 if self.small_nodes.is_empty() {
                     let node = self.big_nodes.pop_back().unwrap();

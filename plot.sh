@@ -20,8 +20,9 @@ set output "$bench_folder/$s.jpg"
 set title 'Sum of a random tree of size $s, with and without levels, 3 threads'
 set xlabel 'Level used'
 set ylabel 'Time (ns)'
+f(y) = (1/y) + $const
 set style fill transparent solid 0.5 noborder
-plot "$bench_folder/$s.data" with linespoints linestyle 1 title "With levels(x)", $const with lines title "Without levels"
+plot "$bench_folder/$s.data" with linespoints linestyle 1 title "With levels(x)", $const with lines title "Without levels", f(x) with lines title "Approximation"
 EOF
     
 done;

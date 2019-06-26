@@ -5,7 +5,7 @@ use std::path::Path;
 use std::time::Duration;
 use time::precise_time_ns;
 
-const ITERATIONS: usize = 1000;
+const ITERATIONS: usize = 100;
 
 pub struct Bencher<'a, S, F> {
     path: &'a Path,
@@ -30,8 +30,21 @@ where
     fn bench(&self, size: usize, levels: Option<usize>) -> Duration {
         let mut results: Vec<u64> = vec![];
 
-        for _ in 0..ITERATIONS {
+        for i in 0..ITERATIONS {
             let setup_result = (self.setup)(size);
+
+            print!(
+                "\r{: <40}\rIteration {}/{} ({}%)...",
+                "",
+                i + 1,
+                ITERATIONS,
+                ((i as f32 / ITERATIONS as f32) * 100.0)
+            );
+
+            std::io::stdout()
+                .flush()
+                .expect("error during debug printing");
+
             let begin = precise_time_ns();
 
             let _ = (self.function)(setup_result, levels); // the let is to avoid measuring tree drop in measurements
@@ -40,6 +53,8 @@ where
 
             results.push(end - begin);
         }
+
+        println!();
 
         Duration::from_nanos(results.iter().cloned().sum::<u64>() / (ITERATIONS as u64))
     }
