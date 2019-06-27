@@ -28,28 +28,21 @@ fn sum_par_level(tree: &ABR<u64, ()>, level: usize) -> Wrapping<u64> {
     tree.par_iter().levels(level).map(|n| Wrapping(n.key)).sum()
 }
 
-fn find_depth_first(tree: &ABR<u64, ()>, depth: usize, target: u64) -> Option<&Node<u64, ()>> {
-    match tree
-        .par_iter()
+fn find_depth_first(tree: &ABR<u64, ()>, depth: usize, target: u64) -> Option<&BoxedNode<u64, ()>> {
+    tree.par_iter()
         .cut()
         .depth_first(depth)
         .with_policy(Policy::Join(1))
         .map(|i_par| {
-            match i_par
+            i_par
                 .levels(5)
                 .iterator_fold(|mut i_seq| i_seq.find(|e| e.key == target))
                 .reduce(|| None, |a, b| a.or(b))
-                .ok_or(())
-            {
-                Ok(elem) => Err(elem),
-                Err(_) => Ok(()),
-            }
+                .map(|n| Err(n))
+                .unwrap_or(Ok(()))
         })
         .try_reduce(|| (), |_, _| Ok(()))
-    {
-        Ok(()) => None,
-        Err(elem) => Some(elem),
-    }
+        .err()
 }
 
 fn find_normal(tree: &ABR<u64, ()>, target: u64) -> Option<&BoxedNode<u64, ()>> {
@@ -106,9 +99,9 @@ fn criterion_benchmark_levels(c: &mut Criterion) {
 }
 
 fn criterion_benchmark_depth_first(c: &mut Criterion) {
-    let depths: Vec<usize> = (4..6).collect();
+    let depths: Vec<usize> = (3..7).collect();
 
-    let size = 200_000;
+    let size = 20_000;
 
     c.bench(
         "Depth first optimisation for find()",
